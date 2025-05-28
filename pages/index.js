@@ -1,184 +1,412 @@
-import { useState, useEffect } from 'react';
+import AdvancedLayout from '../components/AdvancedLayout';
+import Testimonials from '../components/Testimonials';
+import SkillsVisualization from '../components/SkillsVisualization';
 import Link from 'next/link';
-import { ArrowRight, Download, Shield, Zap, Database, Globe, Target, Lock, Eye, Cpu, Wifi, Code, Terminal, Activity } from 'lucide-react';
+import { useState, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
-import CyberButton from '../components/CyberButton';
+import { 
+  ArrowRight, 
+  Download, 
+  Shield, 
+  Target, 
+  Database, 
+  Globe, 
+  CheckCircle, 
+  Award, 
+  Users, 
+  TrendingUp,
+  Mail,
+  Phone,
+  MapPin,
+  Github,
+  Linkedin,
+  ExternalLink,
+  Play,
+  Pause,
+  Calendar,
+  Clock,
+  Star,
+  Zap,
+  Eye,
+  Lock,
+  Server,
+  Code,
+  Brain,
+  Activity,
+  Briefcase,
+  FileText,
+  MessageCircle
+} from 'lucide-react';
 
 export default function Home() {
-  const [typewriterText, setTypewriterText] = useState('');
+  const [currentTitle, setCurrentTitle] = useState(0);
+  const [isTyping, setIsTyping] = useState(true);
   const [showCursor, setShowCursor] = useState(true);
-  const fullText = "Cybersecurity Analyst & Penetration Testing Specialist";
-
+  
   const { ref: heroRef, inView: heroInView } = useInView({ threshold: 0.1 });
-  const { ref: skillsRef, inView: skillsInView } = useInView({ threshold: 0.1 });
+  const { ref: statsRef, inView: statsInView } = useInView({ threshold: 0.1 });
+  const { ref: servicesRef, inView: servicesInView } = useInView({ threshold: 0.1 });
   const { ref: projectsRef, inView: projectsInView } = useInView({ threshold: 0.1 });
+  const { ref: experienceRef, inView: experienceInView } = useInView({ threshold: 0.1 });
 
-  useEffect(() => {
-    let index = 0;
-    const interval = setInterval(() => {
-      if (index < fullText.length) {
-        setTypewriterText(fullText.slice(0, index + 1));
-        index++;
-      } else {
-        clearInterval(interval);
-      }
-    }, 100);
-
-    const cursorInterval = setInterval(() => {
-      setShowCursor(prev => !prev);
-    }, 500);
-
-    return () => {
-      clearInterval(interval);
-      clearInterval(cursorInterval);
-    };
-  }, []);
-
-  const skills = [
-    { 
-      name: 'Network Security', 
-      icon: <Shield className="w-8 h-8" />, 
-      technologies: ['Tipping Point', 'Snort', 'Wireshark', 'Suricata'],
-      color: 'from-cyan-500 to-blue-500'
-    },
-    { 
-      name: 'Penetration Testing', 
-      icon: <Target className="w-8 h-8" />, 
-      technologies: ['Metasploit', 'Kali Linux', 'Burp Suite', 'Nmap'],
-      color: 'from-red-500 to-pink-500'
-    },
-    { 
-      name: 'Threat Intelligence', 
-      icon: <Eye className="w-8 h-8" />, 
-      technologies: ['Splunk', 'Chronicle Security', 'YARA', 'SIEM'],
-      color: 'from-purple-500 to-indigo-500'
-    },
-    { 
-      name: 'AI & Automation', 
-      icon: <Cpu className="w-8 h-8" />, 
-      technologies: ['Python Scripting', 'ML for Security', 'Anomaly Detection', 'Blockchain Security'],
-      color: 'from-green-500 to-teal-500'
-    },
+  const titles = [
+    "Cybersecurity Professional",
+    "Penetration Testing Specialist", 
+    "Network Security Expert",
+    "AI Security Researcher",
+    "Incident Response Analyst"
   ];
 
   const stats = [
-    { label: 'Security Audits', value: '50+', icon: <Lock className="w-6 h-6" /> },
-    { label: 'Vulnerabilities Found', value: '200+', icon: <Target className="w-6 h-6" /> },
-    { label: 'Systems Secured', value: '100+', icon: <Shield className="w-6 h-6" /> },
-    { label: 'Threat Incidents', value: '500+', icon: <Activity className="w-6 h-6" /> },
+    { 
+      value: "99.2%", 
+      label: "Threat Detection Accuracy", 
+      icon: <Target className="w-6 h-6" />,
+      description: "AI-powered intrusion detection success rate"
+    },
+    { 
+      value: "200+", 
+      label: "Vulnerabilities Identified", 
+      icon: <Shield className="w-6 h-6" />,
+      description: "Critical security flaws discovered and patched"
+    },
+    { 
+      value: "50+", 
+      label: "Security Assessments", 
+      icon: <CheckCircle className="w-6 h-6" />,
+      description: "Comprehensive penetration tests completed"
+    },
+    { 
+      value: "4+", 
+      label: "Years Experience", 
+      icon: <Award className="w-6 h-6" />,
+      description: "Professional cybersecurity expertise"
+    },
   ];
+
+  const services = [
+    {
+      title: "Penetration Testing",
+      description: "Comprehensive security assessments to identify vulnerabilities before attackers do",
+      icon: <Target className="w-8 h-8" />,
+      features: ["Network penetration testing", "Web application security", "Social engineering assessment", "Wireless security testing"],
+      tools: ["Metasploit", "Burp Suite", "Nmap", "Kali Linux"],
+      deliverables: "Detailed vulnerability report with remediation strategies"
+    },
+    {
+      title: "Network Security",
+      description: "Advanced network protection and monitoring solutions for enterprise environments",
+      icon: <Shield className="w-8 h-8" />,
+      features: ["Firewall configuration", "IDS/IPS deployment", "Network monitoring", "Traffic analysis"],
+      tools: ["Wireshark", "Snort", "pfSense", "Cisco ASA"],
+      deliverables: "Secure network architecture with 24/7 monitoring"
+    },
+    {
+      title: "AI-Powered Security",
+      description: "Next-generation threat detection using machine learning and behavioral analysis",
+      icon: <Brain className="w-8 h-8" />,
+      features: ["Anomaly detection", "Behavioral analysis", "Predictive threat modeling", "Automated response"],
+      tools: ["TensorFlow", "PyTorch", "Scikit-learn", "Python"],
+      deliverables: "Intelligent security system with 95%+ accuracy"
+    },
+    {
+      title: "Incident Response",
+      description: "Rapid threat containment and forensic analysis for security breaches",
+      icon: <Activity className="w-8 h-8" />,
+      features: ["Threat hunting", "Digital forensics", "Malware analysis", "Recovery planning"],
+      tools: ["Splunk", "Volatility", "Autopsy", "YARA"],
+      deliverables: "Complete incident analysis and recovery roadmap"
+    },
+    {
+      title: "Security Consulting",
+      description: "Strategic cybersecurity guidance for digital transformation and compliance",
+      icon: <Users className="w-8 h-8" />,
+      features: ["Risk assessment", "Compliance auditing", "Security architecture", "Policy development"],
+      tools: ["NIST Framework", "ISO 27001", "GDPR", "Risk assessment tools"],
+      deliverables: "Comprehensive security strategy and implementation plan"  
+    },
+    {
+      title: "Blockchain Security",
+      description: "Specialized security analysis for blockchain applications and smart contracts",
+      icon: <Database className="w-8 h-8" />,
+      features: ["Smart contract auditing", "DeFi security", "Blockchain analysis", "Crypto security"],
+      tools: ["Slither", "MythX", "Brownie", "Web3.py"],
+      deliverables: "Detailed blockchain security assessment report"
+    }
+  ];
+
+  const featuredProjects = [
+    {
+      title: "Neural Network Intrusion Detection System",
+      description: "AI-powered system achieving 99.2% accuracy in real-time threat detection",
+      image: "/projects/neural-ids.jpg",
+      technologies: ["Python", "TensorFlow", "Wireshark", "Docker"],
+      status: "Production",
+      impact: "Reduced false positives by 75%",
+      link: "/projects#neural-ids"
+    },
+    {
+      title: "Blockchain Security Framework",
+      description: "Comprehensive tool for smart contract vulnerability assessment",
+      image: "/projects/blockchain-security.jpg", 
+      technologies: ["Python", "Solidity", "Web3.py", "Ethereum"],
+      status: "Active",
+      impact: "Prevented $2M+ in potential losses",
+      link: "/projects#blockchain-security"
+    },
+    {
+      title: "Enterprise Penetration Testing Suite",
+      description: "Advanced toolkit streamlining security assessment workflows",
+      image: "/projects/pentest-suite.jpg",
+      technologies: ["Python", "Metasploit", "Nmap", "Custom Scripts"],
+      status: "Completed",
+      impact: "40% reduction in testing time",
+      link: "/projects#pentest-suite"
+    }
+  ];
+
+  const experience = [
+    {
+      role: "IT Technician",
+      company: "University of Westminster",
+      period: "Jan 2025 - Present",
+      location: "London, UK",
+      type: "Full-time",
+      highlights: [
+        "Deployed next-generation firewall solutions across campus network",
+        "Implemented zero-trust architecture reducing breach vectors by 75%",
+        "Led cybersecurity training for 500+ staff and students"
+      ]
+    },
+    {
+      role: "Technology Consulting Intern",
+      company: "PricewaterhouseCoopers (PwC)",
+      period: "Jul - Aug 2024",
+      location: "Doha, Qatar", 
+      type: "Internship",
+      highlights: [
+        "Coordinated with Google and Microsoft on digital transformation",
+        "Conducted cybersecurity assessments for critical infrastructure",
+        "Presented findings to C-suite executives and government officials"
+      ]
+    },
+    {
+      role: "Cyber Security Intern",
+      company: "Sidra Holding LLC",
+      period: "May - Jun 2024", 
+      location: "Doha, Qatar",
+      type: "Internship",
+      highlights: [
+        "Monitored network traffic for 200+ endpoints using SIEM",
+        "Identified and mitigated 15+ potential security threats",
+        "Developed automated scripts reducing response time by 60%"
+      ]
+    }
+  ];
+
+  const quickLinks = [
+    { name: "View Projects", href: "/projects", icon: <Briefcase className="w-5 h-5" /> },
+    { name: "Download Resume", href: "/resume.pdf", icon: <FileText className="w-5 h-5" /> },
+    { name: "Get In Touch", href: "/contact", icon: <MessageCircle className="w-5 h-5" /> },
+    { name: "About Me", href: "/about", icon: <Users className="w-5 h-5" /> }
+  ];
+
+  // Track if sections have ever been in view
+  const [heroHasBeenInView, setHeroHasBeenInView] = useState(false);
+  const [statsHasBeenInView, setStatsHasBeenInView] = useState(false);
+  const [servicesHasBeenInView, setServicesHasBeenInView] = useState(false);
+  const [projectsHasBeenInView, setProjectsHasBeenInView] = useState(false);
+  const [experienceHasBeenInView, setExperienceHasBeenInView] = useState(false);
+
+  useEffect(() => { if (heroInView) setHeroHasBeenInView(true); }, [heroInView]);
+  useEffect(() => { if (statsInView) setStatsHasBeenInView(true); }, [statsInView]);
+  useEffect(() => { if (servicesInView) setServicesHasBeenInView(true); }, [servicesInView]);
+  useEffect(() => { if (projectsInView) setProjectsHasBeenInView(true); }, [projectsInView]);
+  useEffect(() => { if (experienceInView) setExperienceHasBeenInView(true); }, [experienceInView]);
+
+  // Typewriter effect
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTitle((prev) => (prev + 1) % titles.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Cursor blinking effect
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setShowCursor(prev => !prev);
+    }, 500);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <>
       {/* Hero Section */}
-      <section className="min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-        <div ref={heroRef} className={`text-center max-w-2xl sm:max-w-4xl mx-auto z-10 ${heroInView ? 'motion-safe:animate-zoom-in' : 'opacity-0'}`}>
-          {/* Holographic Avatar */}
-          <div className="mb-8 relative">
-            <div className="w-24 h-24 sm:w-32 sm:h-32 mx-auto rounded-full bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 p-1 motion-safe:animate-pulse-glow">
-              <div className="w-full h-full rounded-full bg-black flex items-center justify-center border-2 border-cyan-400/30">
-                <div className="p-3 sm:p-4 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full">
-                  <Terminal className="w-8 h-8 sm:w-12 sm:h-12 text-white" />
-                </div>
-              </div>
+      <section className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-qatar-beige via-white to-qatar-beige/50 relative overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+          }}></div>
+        </div>
+
+        <div ref={heroRef} className={`text-center max-w-6xl mx-auto relative z-10 ${heroHasBeenInView ? 'animate-fade-in' : 'opacity-0'}`}>
+          {/* Main Heading */}
+          <div className="mb-8">
+            <h1 className="text-6xl sm:text-8xl font-serif font-bold heading-primary mb-6 leading-tight">
+              Jaber Farooqi
+            </h1>
+            <div className="w-32 h-1 gradient-qatar mx-auto mb-8"></div>
+            
+            {/* Typewriter Effect */}
+            <div className="text-2xl sm:text-3xl font-medium text-qatar-maroon mb-8 h-12 flex items-center justify-center">
+              <span className="mr-2">{titles[currentTitle]}</span>
+              <span className={`inline-block w-1 h-8 bg-qatar-maroon ${showCursor ? 'opacity-100' : 'opacity-0'} transition-opacity duration-100`}></span>
             </div>
+            
+            <p className="text-xl sm:text-2xl text-elegant max-w-4xl mx-auto mb-12 leading-relaxed">
+              Passionate cybersecurity professional with expertise in penetration testing, 
+              AI-powered threat detection, and enterprise security architecture. 
+              <span className="block mt-4 text-lg text-qatar-gray">
+                Based in London • Available globally • Committed to digital security excellence
+              </span>
+            </p>
           </div>
 
-          <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold mb-4 sm:mb-6 font-['Orbitron']">
-            <span className="block text-white mb-2">Hi, I'm</span>
-            <span className="text-cyan-400 drop-shadow-[0_0_20px_rgba(0,255,255,0.8)] font-extrabold">
-              JABER FAROOQI
-            </span>
-          </h1>
-          
-          <div className="text-lg sm:text-2xl md:text-3xl text-cyan-400 mb-6 sm:mb-8 h-10 sm:h-12 font-['Rajdhani'] font-medium">
-            <span className="typewriter">
-              {typewriterText}
-              <span className={`border-r-2 border-cyan-400 ${showCursor ? 'opacity-100' : 'opacity-0'}`}>|</span>
-            </span>
-          </div>
-          
-          <p className="text-base sm:text-lg md:text-xl text-gray-300 mb-8 sm:mb-12 max-w-xs sm:max-w-2xl mx-auto leading-relaxed font-['Rajdhani']">
-            Elite cybersecurity specialist with extensive experience in penetration testing, network defense, 
-            and AI-powered security solutions. Protecting digital infrastructure from advanced persistent threats 
-            across government and financial sectors.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center mb-10 sm:mb-16 w-full">
-            <CyberButton href="/projects" variant="primary" className="text-base sm:text-lg w-full sm:w-auto py-4 sm:py-3">
-              <Zap className="mr-2 w-5 h-5" />
-              Explore Arsenal
-              <ArrowRight className="ml-2 w-5 h-5" />
-            </CyberButton>
-            <CyberButton href="/resume.pdf" variant="secondary" className="text-base sm:text-lg w-full sm:w-auto py-4 sm:py-3">
-              <Download className="mr-2 w-5 h-5" />
-              Download Intel
-            </CyberButton>
+          {/* Quick Actions */}
+          <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16">
+            <Link
+              href="/projects"
+              className="btn-primary inline-flex items-center text-lg px-8 py-4 group"
+            >
+              <Eye className="mr-2 w-5 h-5 group-hover:scale-110 transition-transform" />
+              View My Work
+              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </Link>
+            <a
+              href="/Jaber-Farooqi-Resume.pdf"
+              className="btn-secondary inline-flex items-center text-lg px-8 py-4 group"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Download className="mr-2 w-5 h-5 group-hover:scale-110 transition-transform" />
+              Download Resume
+            </a>
           </div>
 
-          {/* Stats Grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 max-w-xs sm:max-w-4xl mx-auto">
+          {/* Quick Links */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto mb-16">
+            {quickLinks.map((link, index) => (
+              <Link
+                key={link.name}
+                href={link.href}
+                className="card-elegant p-4 text-center hover:shadow-elegant-lg transition-all duration-300 group"
+              >
+                <div className="text-qatar-maroon mb-2 flex justify-center group-hover:scale-110 transition-transform">
+                  {link.icon}
+                </div>
+                <div className="text-sm font-medium text-qatar-navy group-hover:text-qatar-maroon transition-colors">
+                  {link.name}
+                </div>
+              </Link>
+            ))}
+          </div>
+
+          {/* Professional Stats */}
+          <div ref={statsRef} className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
             {stats.map((stat, index) => (
               <div
                 key={stat.label}
-                className={`bg-black/40 backdrop-blur-md border border-cyan-500/30 rounded-lg p-4 sm:p-6 neon-border hover:scale-105 transition-all duration-300 ${heroInView ? 'motion-safe:animate-slide-in' : 'opacity-0'}`}
-                style={{ animationDelay: `${index * 0.2}s` }}
+                className={`card-elegant p-6 text-center hover:shadow-elegant-lg transition-all duration-300 group ${
+                  statsHasBeenInView ? 'animate-scale-in' : 'opacity-0'
+                }`}
+                style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="text-cyan-400 mb-2 flex justify-center">
+                <div className="text-qatar-maroon mb-3 flex justify-center group-hover:scale-110 transition-transform">
                   {stat.icon}
                 </div>
-                <div className="text-lg sm:text-2xl font-bold text-white mb-1 font-['Orbitron']">{stat.value}</div>
-                <div className="text-xs sm:text-sm text-gray-400 font-['Rajdhani']">{stat.label}</div>
+                <div className="text-3xl sm:text-4xl font-bold heading-primary mb-2">{stat.value}</div>
+                <div className="text-sm text-elegant font-medium mb-2">{stat.label}</div>
+                <div className="text-xs text-qatar-gray leading-tight">{stat.description}</div>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Floating Elements */}
-        <div className="absolute top-20 left-4 w-2 h-2 bg-cyan-400 rounded-full motion-safe:animate-float opacity-70"></div>
-        <div className="absolute top-40 right-8 w-3 h-3 bg-pink-400 rounded-full motion-safe:animate-float opacity-70" style={{animationDelay: '2s'}}></div>
-        <div className="absolute bottom-20 left-8 w-2 h-2 bg-yellow-400 rounded-full motion-safe:animate-float opacity-70" style={{animationDelay: '4s'}}></div>
-        <div className="absolute bottom-40 right-4 w-3 h-3 bg-green-400 rounded-full motion-safe:animate-float opacity-70" style={{animationDelay: '1s'}}></div>
+        {/* Scroll Indicator */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+          <div className="w-6 h-10 border-2 border-qatar-navy rounded-full flex justify-center">
+            <div className="w-1 h-3 bg-qatar-navy rounded-full mt-2 animate-pulse"></div>
+          </div>
+        </div>
       </section>
 
-      {/* Skills Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 relative">
+      {/* Services Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-7xl mx-auto">
-          <div ref={skillsRef} className={`text-center mb-16 ${skillsInView ? 'animate-zoom-in' : 'opacity-0'}`}>
-            <h2 className="text-4xl sm:text-6xl font-bold mb-6 font-['Orbitron']">
-              CYBER ARSENAL
+          <div ref={servicesRef} className={`text-center mb-16 ${servicesHasBeenInView ? 'animate-fade-in' : 'opacity-0'}`}>
+            <h2 className="text-4xl sm:text-5xl font-serif font-bold heading-primary mb-4">
+              Cybersecurity Services
             </h2>
-            <p className="text-xl text-gray-400 max-w-3xl mx-auto font-['Rajdhani']">
-              Advanced cybersecurity technologies and frameworks for enterprise-level threat detection and mitigation.
+            <div className="section-divider"></div>
+            <p className="text-lg text-elegant max-w-3xl mx-auto">
+              Comprehensive cybersecurity solutions tailored to protect your digital infrastructure 
+              and enable secure digital transformation.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {skills.map((skill, index) => (
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {services.map((service, index) => (
               <div
-                key={skill.name}
-                className={`group relative bg-black/60 backdrop-blur-md border border-cyan-500/30 rounded-lg p-8 hover:scale-105 transition-all duration-500 card-3d neon-border scan-line ${skillsInView ? 'animate-slide-in' : 'opacity-0'}`}
-                style={{ animationDelay: `${index * 0.2}s` }}
+                key={service.title}
+                className={`card-elegant p-8 hover:shadow-elegant-xl transition-all duration-300 group ${
+                  servicesHasBeenInView ? 'animate-slide-up' : 'opacity-0'
+                }`}
+                style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className={`absolute inset-0 bg-gradient-to-br ${skill.color} opacity-0 group-hover:opacity-10 rounded-lg transition-opacity duration-300`}></div>
-                <div className="relative z-10">
-                  <div className="text-cyan-400 mb-6 flex justify-center group-hover:text-white transition-colors duration-300 animate-float">
-                    {skill.icon}
+                <div className="text-qatar-maroon mb-6 flex justify-center group-hover:scale-110 transition-transform">
+                  {service.icon}
+                </div>
+                <h3 className="text-xl font-serif font-bold heading-secondary mb-4 text-center">
+                  {service.title}
+                </h3>
+                <p className="text-elegant mb-6 leading-relaxed text-center">
+                  {service.description}
+                </p>
+                
+                <div className="space-y-4">
+                  <div>
+                    <h4 className="font-semibold text-qatar-navy text-sm mb-2">Key Features:</h4>
+                    <ul className="text-sm text-elegant space-y-1">
+                      {service.features.map((feature, idx) => (
+                        <li key={idx} className="flex items-center">
+                          <CheckCircle className="w-4 h-4 text-green-600 mr-2 flex-shrink-0" />
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                  <h3 className="text-xl font-bold mb-4 text-white font-['Orbitron'] group-hover:text-cyan-400 transition-colors duration-300">
-                    {skill.name}
-                  </h3>
-                  <ul className="space-y-2">
-                    {skill.technologies.map((tech, techIndex) => (
-                      <li
-                        key={tech}
-                        className="text-gray-400 group-hover:text-gray-300 transition-colors duration-300 font-['Rajdhani']"
-                        style={{ animationDelay: `${(index * 0.2) + (techIndex * 0.1)}s` }}
-                      >
-                        <span className="text-cyan-400 mr-2">▸</span>
-                        {tech}
-                      </li>
-                    ))}
-                  </ul>
+                  
+                  <div>
+                    <h4 className="font-semibold text-qatar-navy text-sm mb-2">Tools Used:</h4>
+                    <div className="flex flex-wrap gap-1">
+                      {service.tools.map((tool, idx) => (
+                        <span
+                          key={idx}
+                          className="px-2 py-1 bg-qatar-beige text-qatar-navy rounded text-xs font-medium"
+                        >
+                          {tool}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  <div className="pt-4 border-t border-gray-100">
+                    <div className="text-xs text-qatar-gray">
+                      <strong>Deliverable:</strong> {service.deliverables}
+                    </div>
+                  </div>
                 </div>
               </div>
             ))}
@@ -186,109 +414,242 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Featured Projects Preview */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 relative">
+      {/* Skills Visualization */}
+      <SkillsVisualization />
+
+      {/* Featured Projects */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-qatar-beige to-white">
         <div className="max-w-7xl mx-auto">
-          <div ref={projectsRef} className={`text-center mb-16 ${projectsInView ? 'animate-zoom-in' : 'opacity-0'}`}>
-            <h2 className="text-4xl sm:text-6xl font-bold mb-6 font-['Orbitron']">
-              MISSION LOGS
+          <div ref={projectsRef} className={`text-center mb-16 ${projectsHasBeenInView ? 'animate-fade-in' : 'opacity-0'}`}>
+            <h2 className="text-4xl sm:text-5xl font-serif font-bold heading-primary mb-4">
+              Featured Projects
             </h2>
-            <p className="text-xl text-gray-400 max-w-3xl mx-auto font-['Rajdhani']">
-              Critical security operations and advanced threat detection systems deployed in enterprise environments.
+            <div className="section-divider"></div>
+            <p className="text-lg text-elegant max-w-3xl mx-auto">
+              Showcasing innovative cybersecurity solutions that demonstrate practical application 
+              of advanced security expertise and cutting-edge technologies.
             </p>
           </div>
+          
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-            {[
-              {
-                title: "AI-Powered IDS",
-                tech: "Machine Learning",
-                description: "Advanced intrusion detection using neural networks",
-                color: "from-cyan-500 to-blue-500"
-              },
-              {
-                title: "Blockchain Security Suite",
-                tech: "Smart Contract Analysis",
-                description: "Comprehensive blockchain vulnerability assessment",
-                color: "from-purple-500 to-pink-500"
-              },
-              {
-                title: "Network Traffic Analyzer",  
-                tech: "Real-time Monitoring",
-                description: "Enterprise-grade packet analysis and threat detection",
-                color: "from-green-500 to-teal-500"
-              }
-            ].map((project, index) => (
+            {featuredProjects.map((project, index) => (
               <div
                 key={project.title}
-                className={`group relative bg-black/60 backdrop-blur-md border border-cyan-500/30 rounded-lg overflow-hidden hover:scale-105 transition-all duration-500 card-3d neon-border ${projectsInView ? 'animate-slide-in' : 'opacity-0'}`}
+                className={`card-elegant p-0 overflow-hidden hover:shadow-elegant-xl transition-all duration-300 group ${
+                  projectsHasBeenInView ? 'animate-slide-up' : 'opacity-0'
+                }`}
                 style={{ animationDelay: `${index * 0.2}s` }}
               >
-                <div className={`h-48 bg-gradient-to-br ${project.color} relative overflow-hidden`}>
-                  <div className="absolute inset-0 bg-black/40"></div>
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <Terminal className="w-16 h-16 text-white animate-pulse-glow" />
+                {/* Project Image Placeholder */}
+                <div className="h-48 bg-gradient-to-br from-qatar-navy to-qatar-maroon flex items-center justify-center relative overflow-hidden">
+                  <div className="text-6xl font-bold text-white opacity-20">
+                    {project.title.split(' ').map(word => word[0]).join('').slice(0, 3)}
                   </div>
-                  <div className="absolute top-4 right-4 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full">
-                    <span className="text-xs text-cyan-400 font-['Rajdhani'] font-medium">{project.tech}</span>
+                  <div className="absolute top-4 right-4">
+                    <span className={`px-3 py-1 rounded-full text-xs font-medium ${
+                      project.status === 'Production' ? 'bg-green-100 text-green-800' :
+                      project.status === 'Active' ? 'bg-blue-100 text-blue-800' :
+                      'bg-gray-100 text-gray-800'
+                    }`}>
+                      {project.status}
+                    </span>
                   </div>
                 </div>
+                
                 <div className="p-6">
-                  <h3 className="text-xl font-bold mb-2 text-white font-['Orbitron'] group-hover:text-cyan-400 transition-colors duration-300">
+                  <h3 className="text-lg font-serif font-bold heading-secondary mb-3">
                     {project.title}
                   </h3>
-                  <p className="text-gray-400 mb-4 font-['Rajdhani']">
+                  <p className="text-elegant mb-4 text-sm leading-relaxed">
                     {project.description}
                   </p>
-                  <div className="flex space-x-4">
-                    <span className="text-cyan-400 hover:text-white font-medium cursor-pointer transition-colors duration-300 font-['Rajdhani']">
-                      Deploy →
-                    </span>
-                    <span className="text-gray-400 hover:text-gray-300 font-medium cursor-pointer transition-colors duration-300 font-['Rajdhani']">
-                      Source Code
-                    </span>
+                  
+                  <div className="mb-4">
+                    <div className="flex flex-wrap gap-2">
+                      {project.technologies.map((tech, idx) => (
+                        <span
+                          key={idx}
+                          className="px-2 py-1 bg-qatar-beige text-qatar-navy rounded text-xs font-medium"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center justify-between">
+                    <div className="text-xs text-qatar-gray">
+                      <strong>Impact:</strong> {project.impact}
+                    </div>
+                    <Link
+                      href={project.link}
+                      className="text-qatar-maroon hover:text-qatar-navy transition-colors text-sm font-medium flex items-center group"
+                    >
+                      View Details
+                      <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                    </Link>
                   </div>
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-cyan-400/5 to-transparent opacity-0 group-hover:opacity-100 transform -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] transition-all duration-1000"></div>
               </div>
             ))}
           </div>
+          
           <div className="text-center">
-            <CyberButton href="/projects" variant="accent" className="text-lg">
-              <Database className="mr-2 w-5 h-5" />
-              Access Full Database
-              <ArrowRight className="ml-2 w-5 h-5" />
-            </CyberButton>
+            <Link
+              href="/projects"
+              className="btn-primary inline-flex items-center text-lg group"
+            >
+              View All Projects
+              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* Terminal Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 relative">
-        <div className="max-w-4xl mx-auto">
-          <div className="bg-black/80 backdrop-blur-md border border-cyan-500/30 rounded-lg p-8 neon-border font-mono">
-            <div className="flex items-center mb-4">
-              <div className="flex space-x-2">
-                <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-                <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+      {/* Professional Experience Preview */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div ref={experienceRef} className={`text-center mb-16 ${experienceHasBeenInView ? 'animate-fade-in' : 'opacity-0'}`}>
+            <h2 className="text-4xl sm:text-5xl font-serif font-bold heading-primary mb-4">
+              Professional Experience
+            </h2>
+            <div className="section-divider"></div>
+            <p className="text-lg text-elegant max-w-3xl mx-auto">
+              Proven track record of success in cybersecurity roles at prestigious organizations 
+              including PwC, University of Westminster, and leading financial institutions.
+            </p>
+          </div>
+          
+          <div className="space-y-8 mb-12">
+            {experience.map((exp, index) => (
+              <div
+                key={index}
+                className={`card-elegant p-8 hover:shadow-elegant-lg transition-all duration-300 ${
+                  experienceHasBeenInView ? 'animate-slide-in-left' : 'opacity-0'
+                }`}
+                style={{ animationDelay: `${index * 0.2}s` }}
+              >
+                <div className="flex flex-col lg:flex-row gap-8">
+                  <div className="lg:w-1/3">
+                    <div className="flex items-center mb-2">
+                      <div className="w-3 h-3 bg-qatar-maroon rounded-full mr-3"></div>
+                      <span className="text-sm font-medium text-qatar-maroon">{exp.period}</span>
+                    </div>
+                    <h3 className="text-xl font-serif font-bold heading-secondary mb-2">
+                      {exp.role}
+                    </h3>
+                    <h4 className="text-lg font-semibold text-qatar-navy mb-2">
+                      {exp.company}
+                    </h4>
+                    <div className="flex items-center text-elegant mb-2">
+                      <MapPin className="w-4 h-4 mr-1" />
+                      {exp.location}
+                    </div>
+                    <span className="inline-block px-3 py-1 bg-qatar-beige text-qatar-navy rounded-full text-sm font-medium">
+                      {exp.type}
+                    </span>
+                  </div>
+                  
+                  <div className="lg:w-2/3">
+                    <h5 className="font-semibold text-qatar-navy mb-4">Key Achievements:</h5>
+                    <ul className="space-y-3">
+                      {exp.highlights.map((highlight, idx) => (
+                        <li key={idx} className="flex items-start">
+                          <CheckCircle className="w-5 h-5 text-green-600 mr-3 flex-shrink-0 mt-0.5" />
+                          <span className="text-elegant">{highlight}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
               </div>
-              <div className="ml-4 text-gray-400 text-sm font-['Rajdhani']">jaber@cybersec:~$</div>
-            </div>
-            <div className="text-green-400 space-y-2 font-['Rajdhani']">
-              <div className="flex"><span className="text-cyan-400">$</span> <span className="ml-2">whoami</span></div>
-              <div className="text-white ml-4">Cybersecurity Analyst | Penetration Tester | Threat Hunter</div>
-              <div className="flex"><span className="text-cyan-400">$</span> <span className="ml-2">ls -la /skills</span></div>
-              <div className="ml-4 space-y-1 text-sm">
-                <div>drwxr-xr-x  penetration-testing/</div>
-                <div>drwxr-xr-x  network-security/</div>
-                <div>drwxr-xr-x  threat-intelligence/</div>
-                <div>drwxr-xr-x  blockchain-security/</div>
-                <div>drwxr-xr-x  ai-cybersecurity/</div>
-              </div>
-              <div className="flex"><span className="text-cyan-400">$</span> <span className="ml-2">cat /etc/motto</span></div>
-              <div className="text-cyan-400 ml-4">"Securing the digital frontier, one vulnerability at a time."</div>
-              <div className="flex items-center"><span className="text-cyan-400">$</span> <span className="ml-2 animate-pulse">_</span></div>
-            </div>
+            ))}
+          </div>
+          
+          <div className="text-center">
+            <Link
+              href="/resume"
+              className="btn-secondary inline-flex items-center text-lg group"
+            >
+              View Complete Resume
+              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <Testimonials limit={3} />
+
+      {/* Contact CTA */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 gradient-qatar text-white relative overflow-hidden">
+        {/* Overlay for contrast */}
+        <div className="absolute inset-0 bg-black/40 z-0"></div>
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-10 z-0">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+          }}></div>
+        </div>
+        <div className="max-w-6xl mx-auto text-center relative z-10">
+          <h2 className="text-4xl sm:text-5xl font-serif font-bold mb-6" style={{textShadow: '0 2px 8px rgba(0,0,0,0.25)'}}>
+            Ready to Secure Your Digital Future?
+          </h2>
+          <p className="text-xl mb-12 leading-relaxed opacity-90 max-w-4xl mx-auto" style={{textShadow: '0 1px 4px rgba(0,0,0,0.18)'}}>
+            Don't wait until it's too late. Proactive cybersecurity is the key to protecting your 
+            organization's most valuable assets. Let's discuss how my expertise can help strengthen 
+            your security posture and enable secure digital transformation.
+          </p>
+          
+          {/* Contact Options */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+            <a
+              href="mailto:Jaberfarooqi@hotmail.com"
+              className="bg-white/10 backdrop-blur-sm p-6 rounded-lg hover:bg-white/20 transition-all duration-300 group"
+            >
+              <Mail className="w-8 h-8 mx-auto mb-4 group-hover:scale-110 transition-transform" />
+              <div className="font-semibold mb-2">Email</div>
+              <div className="text-sm opacity-80">Jaberfarooqi@hotmail.com</div>
+              <div className="text-xs opacity-60 mt-2">Response within 24 hours</div>
+            </a>
+            
+            <a
+              href="tel:+447745690989"
+              className="bg-white/10 backdrop-blur-sm p-6 rounded-lg hover:bg-white/20 transition-all duration-300 group"
+            >
+              <Phone className="w-8 h-8 mx-auto mb-4 group-hover:scale-110 transition-transform" />
+              <div className="font-semibold mb-2">Phone</div>
+              <div className="text-sm opacity-80">+44(0)7745690989</div>
+              <div className="text-xs opacity-60 mt-2">Mon-Fri, 9:00 AM - 6:00 PM GMT</div>
+            </a>
+            
+            <Link
+              href="/contact"
+              className="bg-white/10 backdrop-blur-sm p-6 rounded-lg hover:bg-white/20 transition-all duration-300 group"
+            >
+              <MessageCircle className="w-8 h-8 mx-auto mb-4 group-hover:scale-110 transition-transform" />
+              <div className="font-semibold mb-2">Contact Form</div>
+              <div className="text-sm opacity-80">Secure messaging</div>
+              <div className="text-xs opacity-60 mt-2">Priority-based response</div>
+            </Link>
+          </div>
+          
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+            <Link
+              href="/contact"
+              className="bg-qatar-maroon text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-qatar-navy transition-all duration-300 inline-flex items-center justify-center group"
+            >
+              <MessageCircle className="mr-2 w-5 h-5 group-hover:scale-110 transition-transform" />
+              Start a Conversation
+              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </Link>
+            <Link
+              href="/projects"
+              className="border-2 border-qatar-maroon text-qatar-maroon px-8 py-4 rounded-lg font-semibold text-lg hover:bg-qatar-maroon hover:text-white transition-all duration-300 inline-flex items-center justify-center group"
+            >
+              <Eye className="mr-2 w-5 h-5 group-hover:scale-110 transition-transform" />
+              Explore My Work
+            </Link>
           </div>
         </div>
       </section>

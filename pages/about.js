@@ -1,160 +1,354 @@
-import { GraduationCap, Award, MapPin, Calendar } from 'lucide-react';
+import Layout from '../components/Layout';
+import { useState } from 'react';
+import { useInView } from 'react-intersection-observer';
+import { 
+  Shield, 
+  Target, 
+  Award, 
+  BookOpen, 
+  Coffee, 
+  Mountain, 
+  Camera, 
+  Code2, 
+  Brain, 
+  Heart,
+  Users,
+  Lightbulb,
+  Globe,
+  CheckCircle,
+  ArrowRight,
+  Quote,
+  Gamepad2,
+  Music,
+  Dumbbell,
+  Plane
+} from 'lucide-react';
 
 export default function About() {
-  const education = [
+  const [activeTab, setActiveTab] = useState('story');
+  const { ref: heroRef, inView: heroInView } = useInView({ threshold: 0.1 });
+  const { ref: contentRef, inView: contentInView } = useInView({ threshold: 0.1 });
+
+  const tabs = [
+    { id: 'story', label: 'My Journey', icon: <BookOpen size={18} /> },
+    { id: 'values', label: 'Professional Values', icon: <Heart size={18} /> },
+    { id: 'interests', label: 'Personal Interests', icon: <Coffee size={18} /> },
+    { id: 'goals', label: 'Future Vision', icon: <Target size={18} /> },
+  ];
+
+  const coreValues = [
     {
-      degree: "BSc Computer Science (Honours)",
-      school: "University of Westminster",
-      year: "2022 - 2025",
-      gpa: "Expected First Class",
-      coursework: ["Network Security", "Penetration Testing", "Machine Learning for Security", "Blockchain Security", "AI & Cybersecurity", "Threat Analysis"]
+      title: "Continuous Learning",
+      description: "In cybersecurity, staying current isn't optional—it's essential. I dedicate time daily to learning new attack vectors, defense strategies, and emerging technologies.",
+      icon: <Brain className="w-8 h-8" />,
+      examples: ["Daily threat intelligence research", "Advanced certification pursuits", "Zero-day vulnerability analysis"]
     },
     {
-      degree: "Diploma of Higher Education",
-      school: "Gems American Academy",
-      year: "2018 - 2021",
-      gpa: "Distinction",
-      coursework: ["Computer Science Fundamentals", "Programming", "Mathematics", "Digital Systems"]
+      title: "Ethical Responsibility", 
+      description: "With great power comes great responsibility. I believe in using security knowledge to protect and defend, never to harm or exploit.",
+      icon: <Shield className="w-8 h-8" />,
+      examples: ["Responsible disclosure practices", "Mentoring junior professionals", "Community security education"]
+    },
+    {
+      title: "Innovation & Excellence",
+      description: "The best security solutions come from creative thinking and meticulous execution. I approach every challenge with fresh perspectives.",
+      icon: <Lightbulb className="w-8 h-8" />,
+      examples: ["AI-powered detection systems", "Novel testing methodologies", "Automated security frameworks"]
+    },
+    {
+      title: "Collaborative Leadership",
+      description: "Security is a team effort. The strongest defenses are built through collaboration, knowledge sharing, and collective expertise.",
+      icon: <Users className="w-8 h-8" />,
+      examples: ["Cross-functional integration", "Open-source contributions", "Industry knowledge sharing"]
     }
   ];
 
-  const experience = [
+  const personalInterests = [
     {
-      title: "IT Technician",
-      company: "University of Westminster - London",
-      period: "January 2025 - Present",
-      description: "Providing hardware and software support, troubleshooting desktops, laptops, and network devices. Assisting in network setup and maintenance, configuring routers, switches, and firewalls.",
-      achievements: ["Improved system efficiency and minimized downtime", "Resolved connectivity issues across campus network"]
+      title: "Gaming & Esports",
+      description: "Strategic thinking and quick decision-making translate well to cybersecurity",
+      icon: <Gamepad2 className="w-6 h-6" />,
+      details: ["Competitive gaming strategy", "Team coordination", "Real-time problem solving"]
     },
     {
-      title: "Technology Consulting Intern",
-      company: "PricewaterhouseCoopers (PwC) - Doha",
-      period: "July 2024 - August 2024",
-      description: "Coordinated with stakeholders (Google, Microsoft) to support national digital transformation initiative. Presented alignment of project deliverables with UN SDGs in RFP process.",
-      achievements: ["Designed centralized onboarding toolkit", "Enhanced cross-functional efficiency through documentation"]
+      title: "Photography",
+      description: "Capturing moments and perspectives, documenting the digital world",
+      icon: <Camera className="w-6 h-6" />,
+      details: ["Technology documentation", "Security conference coverage", "London street photography"]
     },
     {
-      title: "Cyber Security Intern",
-      company: "Sidra Holding LLC - Doha",
-      period: "May 2024 - June 2024",
-      description: "Conducted penetration testing on blockchain infrastructure using Wireshark, Burp Suite, and Metasploit. Worked with development team to remediate security issues and strengthen smart contract security.",
-      achievements: ["Identified critical vulnerabilities in blockchain systems", "Enhanced smart contract security protocols"]
+      title: "Travel & Culture",
+      description: "Exploring diverse perspectives and global security practices",
+      icon: <Plane className="w-6 h-6" />,
+      details: ["Cultural cybersecurity approaches", "International threat landscapes", "Global security conferences"]
     },
     {
-      title: "IT Department Intern",
-      company: "Qatar International Islamic Bank (QIIB) - Doha",
-      period: "May 2023 - August 2023",
-      description: "Monitored network traffic using IPS (Tipping Point) and DDoS protection (Arbor DDoS). Conducted packet analysis using Wireshark and gained experience with application firewalls (F5).",
-      achievements: ["Detected and mitigated security threats", "Secured banking applications against cyber threats"]
+      title: "Music Production",
+      description: "Creative expression and technical precision in audio engineering",
+      icon: <Music className="w-6 h-6" />,
+      details: ["Digital audio workstations", "Sound design techniques", "Creative problem solving"]
+    },
+    {
+      title: "Fitness & Wellness",
+      description: "Mental and physical balance for peak performance",
+      icon: <Dumbbell className="w-6 h-6" />,
+      details: ["Stress management", "Physical conditioning", "Mental clarity focus"]
     }
+  ];
+
+  const lifeGoals = [
+    {
+      title: "Professional Excellence",
+      description: "Become a recognized leader in cybersecurity innovation",
+      timeline: "Next 5 years",
+      milestones: ["Lead security architect role", "Speaking at major conferences", "Published security research"]
+    },
+    {
+      title: "Global Impact",
+      description: "Contribute to making the digital world safer for everyone",
+      timeline: "Long-term",
+      milestones: ["Open-source security tools", "Mentorship programs", "Industry standard contributions"]
+    },
+    {
+      title: "Personal Growth",
+      description: "Continuous learning and balanced lifestyle",
+      timeline: "Ongoing",
+      milestones: ["Advanced certifications", "Cultural experiences", "Creative pursuits"]
+    }
+  ];
+
+  const funFacts = [
+    "🏛️ Born in Doha, Qatar - now exploring London's tech scene",
+    "🌍 Fluent in Arabic and English, learning about global security practices",
+    "🎮 Competitive gamer - strategic thinking translates to threat analysis",
+    "📸 Amateur photographer documenting the intersection of tech and culture",
+    "🎵 Enjoy producing electronic music in my spare time",
+    "☕ Coffee enthusiast - best ideas come with perfect espresso",
+    "🏃‍♂️ Fitness enthusiast - physical and mental balance for cybersecurity",
+    "🌙 Night owl - many vulnerabilities are discovered in the quiet hours"
   ];
 
   return (
-    <div className="min-h-screen py-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-4xl mx-auto">
+    <Layout 
+      title="About - Jaber Farooqi | Cybersecurity Professional"
+      description="Learn about Jaber Farooqi's journey from Qatar to London, his passion for cybersecurity, and the values that drive his professional excellence."
+    >
         {/* Hero Section */}
-        <div className="text-center mb-16 animate-fade-in">
-          <h1 className="text-4xl sm:text-5xl font-bold mb-6">About Me</h1>
-          <p className="text-xl text-slate-400 max-w-3xl mx-auto">
-            I'm a passionate Computer Science graduate with a strong foundation in software development 
-            and a keen interest in creating innovative solutions that make a difference.
+      <section className="pt-24 pb-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-qatar-beige via-white to-qatar-beige/50">
+        <div className="max-w-7xl mx-auto">
+          <div ref={heroRef} className={`text-center mb-16 ${heroInView ? 'animate-fade-in' : 'opacity-0'}`}>
+            <h1 className="text-5xl sm:text-6xl font-serif font-bold heading-primary mb-6">
+              About Jaber Farooqi
+            </h1>
+            <div className="section-divider"></div>
+            <p className="text-xl text-elegant max-w-4xl mx-auto leading-relaxed">
+              From the innovative tech landscape of Doha to the vibrant cybersecurity community of London, 
+              my journey has been shaped by curiosity, determination, and an unwavering commitment to 
+              protecting our digital future.
           </p>
         </div>
 
-        {/* Personal Story */}
-        <div className="mb-16 animate-slide-up">
-          <div className="bg-slate-800 rounded-lg p-8">
-            <h2 className="text-2xl font-bold mb-6 flex items-center">
-              <MapPin className="mr-3 text-blue-400" size={24} />
-              My Journey
-            </h2>
-            <div className="space-y-4 text-slate-300 leading-relaxed">
-              <p>
-                My journey into cybersecurity began during my studies at the University of Westminster, 
-                where I discovered my passion for protecting digital infrastructure and solving complex 
-                security challenges. What started as curiosity about network vulnerabilities evolved 
-                into specialized expertise in penetration testing and threat analysis.
-              </p>
-              <p>
-                Through internships at prestigious organizations like PwC, Sidra Holding, and Qatar 
-                International Islamic Bank, I've gained hands-on experience in enterprise security, 
-                blockchain security, and financial sector cybersecurity. Each role has deepened my 
-                understanding of how to protect critical systems and data.
-              </p>
-              <p>
-                I'm particularly passionate about the intersection of AI and cybersecurity, leveraging 
-                machine learning for threat detection and anomaly analysis. When I'm not analyzing 
-                network traffic or conducting penetration tests, you can find me researching emerging 
-                security threats and contributing to the cybersecurity community.
-              </p>
+          {/* Professional Summary Card */}
+          <div className="max-w-5xl mx-auto mb-16">
+            <div className="card-elegant p-8 md:p-12 text-center">
+              <div className="flex flex-col md:flex-row items-center gap-8">
+                <div className="flex-shrink-0">
+                  <div className="w-32 h-32 bg-gradient-to-br from-qatar-navy to-qatar-maroon rounded-full flex items-center justify-center text-white text-4xl font-bold">
+                    JF
+            </div>
+          </div>
+                <div className="flex-1 text-left">
+                  <h2 className="text-2xl font-serif font-bold heading-primary mb-4">
+                    Cybersecurity Professional & Technology Enthusiast
+          </h2>
+                  <p className="text-elegant leading-relaxed mb-6">
+                    Passionate about securing digital infrastructure through innovative solutions, 
+                    continuous learning, and collaborative excellence. Currently pursuing BSc Computer Science 
+                    at University of Westminster while gaining hands-on experience in enterprise security.
+                  </p>
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                    <div>
+                      <div className="text-2xl font-bold heading-primary">4+</div>
+                      <div className="text-sm text-elegant">Years Experience</div>
+                </div>
+                    <div>
+                      <div className="text-2xl font-bold heading-primary">50+</div>
+                      <div className="text-sm text-elegant">Projects Secured</div>
+                </div>
+                    <div>
+                      <div className="text-2xl font-bold heading-primary">15+</div>
+                      <div className="text-sm text-elegant">Certifications</div>
+              </div>
+              <div>
+                      <div className="text-2xl font-bold heading-primary">99%</div>
+                      <div className="text-sm text-elegant">Success Rate</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
+      </section>
 
-        {/* Education */}
-        <div className="mb-16 animate-slide-up">
-          <h2 className="text-3xl font-bold mb-8 flex items-center">
-            <GraduationCap className="mr-3 text-blue-400" size={32} />
-            Education
-          </h2>
-          {education.map((edu, index) => (
-            <div key={index} className="bg-slate-800 rounded-lg p-8">
-              <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
-                <div>
-                  <h3 className="text-xl font-semibold text-blue-400 mb-2">{edu.degree}</h3>
-                  <p className="text-lg text-slate-300 mb-2">{edu.school}</p>
-                  <p className="text-slate-400 flex items-center">
-                    <Calendar className="mr-2" size={16} />
-                    {edu.year}
-                  </p>
-                </div>
-                <div className="mt-4 md:mt-0">
-                  <span className="inline-flex items-center px-3 py-1 bg-green-900 text-green-300 rounded-full text-sm">
-                    <Award className="mr-1" size={14} />
-                    GPA: {edu.gpa}
-                  </span>
-                </div>
-              </div>
-              <div>
-                <h4 className="text-lg font-medium mb-3 text-slate-200">Relevant Coursework:</h4>
-                <div className="flex flex-wrap gap-2">
-                  {edu.coursework.map((course) => (
-                    <span
-                      key={course}
-                      className="px-3 py-1 bg-slate-700 text-slate-300 rounded-full text-sm"
-                    >
-                      {course}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
-          ))}
+      {/* Tab Navigation */}
+      <section className="py-4 px-4 sm:px-6 lg:px-8 bg-white border-b border-gray-100 sticky top-16 z-40">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex justify-center space-x-1 overflow-x-auto">
+            {tabs.map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                className={`flex items-center px-6 py-3 rounded-lg font-medium transition-all duration-300 whitespace-nowrap ${
+                  activeTab === tab.id
+                    ? 'bg-qatar-navy text-white shadow-elegant'
+                    : 'text-qatar-navy hover:bg-qatar-beige'
+                }`}
+              >
+                <span className="mr-2">{tab.icon}</span>
+                {tab.label}
+              </button>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Content Sections */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-white to-qatar-beige/30">
+        <div className="max-w-7xl mx-auto">
+          <div ref={contentRef} className={`${contentInView ? 'animate-fade-in' : 'opacity-0'}`}>
+            
+            {/* My Journey Tab */}
+            {activeTab === 'story' && (
+              <div className="space-y-16">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                  <div className="space-y-8">
+                    <div className="card-elegant p-8">
+                      <h3 className="text-2xl font-serif font-bold heading-secondary mb-6">
+                        The Beginning - Doha, Qatar
+                      </h3>
+                      <p className="text-elegant leading-relaxed mb-4">
+                        Born and raised in Doha, Qatar, I was immersed in a culture that values both 
+                        tradition and innovation. Growing up in one of the world's most technologically 
+                        advanced nations sparked my fascination with digital systems and cybersecurity.
+                      </p>
+                      <p className="text-elegant leading-relaxed">
+                        Qatar's rapid digital transformation and focus on cybersecurity as a national 
+                        priority inspired me to pursue this field. I witnessed firsthand how proper 
+                        security measures protect not just data, but entire societies and economies.
+                      </p>
+                    </div>
+                    
+                    <div className="card-elegant p-8">
+                      <h3 className="text-2xl font-serif font-bold heading-secondary mb-6">
+                        Academic Excellence - London Journey
+                      </h3>
+                      <p className="text-elegant leading-relaxed mb-4">
+                        Moving to London for my Computer Science degree at University of Westminster 
+                        marked a pivotal moment. The diverse tech ecosystem and world-class cybersecurity 
+                        community provided unparalleled learning opportunities.
+                      </p>
+                      <p className="text-elegant leading-relaxed">
+                        Balancing rigorous academic studies with practical experience through internships 
+                        at prestigious organizations like PwC and Qatar International Islamic Bank has 
+                        shaped my holistic understanding of cybersecurity.
+                      </p>
+                    </div>
         </div>
 
-        {/* Experience */}
-        <div className="mb-16 animate-slide-up">
-          <h2 className="text-3xl font-bold mb-8">Experience</h2>
           <div className="space-y-8">
-            {experience.map((exp, index) => (
-              <div key={index} className="bg-slate-800 rounded-lg p-8">
-                <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
+                    <div className="card-elegant p-8">
+                      <h3 className="text-2xl font-serif font-bold heading-secondary mb-6">
+                        Professional Growth
+                      </h3>
+                      <div className="space-y-6">
+                        <div className="flex items-start">
+                          <div className="w-12 h-12 bg-qatar-navy rounded-full flex items-center justify-center text-white font-bold mr-4">
+                            1
+                          </div>
+                          <div>
+                            <h4 className="font-semibold text-qatar-navy">Discovery Phase</h4>
+                            <p className="text-elegant text-sm">Initial fascination with cybersecurity during early computing experiences</p>
+                          </div>
+                        </div>
+                        <div className="flex items-start">
+                          <div className="w-12 h-12 bg-qatar-maroon rounded-full flex items-center justify-center text-white font-bold mr-4">
+                            2
+                          </div>
+                          <div>
+                            <h4 className="font-semibold text-qatar-navy">Education & Training</h4>
+                            <p className="text-elegant text-sm">Formal education combined with practical certifications and hands-on learning</p>
+                          </div>
+                        </div>
+                        <div className="flex items-start">
+                          <div className="w-12 h-12 bg-qatar-gold rounded-full flex items-center justify-center text-white font-bold mr-4">
+                            3
+                          </div>
+                          <div>
+                            <h4 className="font-semibold text-qatar-navy">Professional Experience</h4>
+                            <p className="text-elegant text-sm">Real-world application through internships and current role at University of Westminster</p>
+                          </div>
+                        </div>
+                        <div className="flex items-start">
+                          <div className="w-12 h-12 bg-qatar-light-blue rounded-full flex items-center justify-center text-white font-bold mr-4">
+                            4
+                          </div>
                   <div>
-                    <h3 className="text-xl font-semibold text-blue-400 mb-1">{exp.title}</h3>
-                    <p className="text-lg text-slate-300 mb-2">{exp.company}</p>
+                            <h4 className="font-semibold text-qatar-navy">Continuous Innovation</h4>
+                            <p className="text-elegant text-sm">Ongoing research, development, and contribution to the cybersecurity community</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="card-elegant p-8 bg-gradient-to-br from-qatar-navy to-qatar-maroon text-white">
+                      <Quote className="w-8 h-8 mb-4 opacity-50" />
+                      <blockquote className="text-lg italic mb-4">
+                        "The most rewarding aspect of cybersecurity isn't just protecting systems—it's 
+                        enabling innovation by creating secure foundations for digital transformation."
+                      </blockquote>
+                      <cite className="text-sm opacity-75">- Jaber Farooqi</cite>
+                    </div>
                   </div>
-                  <span className="inline-block px-3 py-1 bg-slate-700 text-slate-300 rounded-full text-sm">
-                    {exp.period}
-                  </span>
                 </div>
-                <p className="text-slate-400 mb-4">{exp.description}</p>
+              </div>
+            )}
+
+            {/* Professional Values Tab */}
+            {activeTab === 'values' && (
+              <div className="space-y-12">
+                <div className="text-center mb-12">
+                  <h2 className="text-3xl font-serif font-bold heading-primary mb-4">
+                    Core Professional Values
+                  </h2>
+                  <p className="text-lg text-elegant max-w-3xl mx-auto">
+                    These principles guide every decision I make and every solution I develop in the cybersecurity field.
+                  </p>
+                </div>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  {coreValues.map((value, index) => (
+                    <div key={value.title} className="card-elegant p-8 hover:shadow-elegant-lg transition-all duration-300">
+                      <div className="flex items-start mb-6">
+                        <div className="text-qatar-maroon mr-4 flex-shrink-0">
+                          {value.icon}
+                        </div>
                 <div>
-                  <h4 className="text-lg font-medium mb-3 text-slate-200">Key Achievements:</h4>
-                  <ul className="space-y-2">
-                    {exp.achievements.map((achievement, i) => (
-                      <li key={i} className="text-slate-300 flex items-start">
-                        <span className="text-blue-400 mr-2">•</span>
-                        {achievement}
+                          <h3 className="text-xl font-serif font-bold heading-secondary mb-3">
+                            {value.title}
+                          </h3>
+                          <p className="text-elegant leading-relaxed mb-4">
+                            {value.description}
+                          </p>
+                        </div>
+                      </div>
+                      <div className="space-y-2">
+                        <h4 className="font-semibold text-qatar-navy text-sm">Key Applications:</h4>
+                        <ul className="text-sm text-elegant space-y-1">
+                          {value.examples.map((example, idx) => (
+                            <li key={idx} className="flex items-center">
+                              <CheckCircle className="w-4 h-4 text-green-600 mr-2 flex-shrink-0" />
+                              {example}
                       </li>
                     ))}
                   </ul>
@@ -162,54 +356,140 @@ export default function About() {
               </div>
             ))}
           </div>
+              </div>
+            )}
+
+            {/* Personal Interests Tab */}
+            {activeTab === 'interests' && (
+              <div className="space-y-12">
+                <div className="text-center mb-12">
+                  <h2 className="text-3xl font-serif font-bold heading-primary mb-4">
+                    Beyond Cybersecurity
+                  </h2>
+                  <p className="text-lg text-elegant max-w-3xl mx-auto">
+                    Personal interests that fuel creativity, maintain balance, and provide fresh perspectives on professional challenges.
+                  </p>
         </div>
 
-        {/* Skills & Interests */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 animate-slide-up">
-          <div className="bg-slate-800 rounded-lg p-8">
-            <h3 className="text-2xl font-bold mb-6">Technical Skills</h3>
-            <div className="space-y-4">
-              {[
-                { category: "Security Tools", skills: ["Metasploit", "Burp Suite", "Wireshark", "Kali Linux", "Nmap"] },
-                { category: "Network Security", skills: ["Tipping Point", "Snort", "Suricata", "F5 Firewalls", "Arbor DDoS"] },
-                { category: "Programming", skills: ["Python", "JavaScript", "SQL", "Bash Scripting", "PowerShell"] },
-                { category: "SIEM & Intelligence", skills: ["Splunk", "Chronicle Security", "YARA", "Threat Hunting"] }
-              ].map((group) => (
-                <div key={group.category}>
-                  <h4 className="font-semibold text-slate-200 mb-2">{group.category}:</h4>
-                  <p className="text-slate-400">{group.skills.join(", ")}</p>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+                  {personalInterests.map((interest, index) => (
+                    <div key={interest.title} className="card-elegant p-6 text-center hover:shadow-elegant-lg transition-all duration-300">
+                      <div className="text-qatar-maroon mb-4 flex justify-center">
+                        {interest.icon}
+                      </div>
+                      <h3 className="text-lg font-serif font-bold heading-secondary mb-3">
+                        {interest.title}
+                      </h3>
+                      <p className="text-elegant text-sm mb-4 leading-relaxed">
+                        {interest.description}
+                      </p>
+                      <div className="space-y-1">
+                        {interest.details.map((detail, idx) => (
+                          <div key={idx} className="text-xs text-qatar-gray">
+                            • {detail}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                
+                {/* Fun Facts Section */}
+                <div className="card-elegant p-8">
+                  <h3 className="text-2xl font-serif font-bold heading-secondary mb-6 text-center">
+                    Fun Facts About Me
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {funFacts.map((fact, index) => (
+                      <div key={index} className="flex items-center p-3 bg-qatar-beige rounded-lg">
+                        <span className="text-lg mr-3">{fact.split(' ')[0]}</span>
+                        <span className="text-elegant text-sm">{fact.substring(fact.indexOf(' ') + 1)}</span>
                 </div>
               ))}
             </div>
           </div>
+              </div>
+            )}
 
-          <div className="bg-slate-800 rounded-lg p-8">
-            <h3 className="text-2xl font-bold mb-6">Interests & Hobbies</h3>
-            <ul className="space-y-3 text-slate-300">
-              <li className="flex items-start">
-                <span className="text-blue-400 mr-3">•</span>
-                AI and machine learning applications in cybersecurity
+            {/* Future Vision Tab */}
+            {activeTab === 'goals' && (
+              <div className="space-y-12">
+                <div className="text-center mb-12">
+                  <h2 className="text-3xl font-serif font-bold heading-primary mb-4">
+                    Future Vision & Goals
+                  </h2>
+                  <p className="text-lg text-elegant max-w-3xl mx-auto">
+                    My roadmap for contributing to the cybersecurity field and making a lasting impact on digital security.
+                  </p>
+                </div>
+                
+                <div className="space-y-8">
+                  {lifeGoals.map((goal, index) => (
+                    <div key={goal.title} className="card-elegant p-8">
+                      <div className="flex flex-col md:flex-row gap-8">
+                        <div className="md:w-2/3">
+                          <div className="flex items-center mb-4">
+                            <div className="w-12 h-12 bg-qatar-navy rounded-full flex items-center justify-center text-white font-bold mr-4">
+                              {index + 1}
+                            </div>
+                            <div>
+                              <h3 className="text-xl font-serif font-bold heading-secondary">
+                                {goal.title}
+                              </h3>
+                              <p className="text-sm text-qatar-maroon font-medium">{goal.timeline}</p>
+                            </div>
+                          </div>
+                          <p className="text-elegant leading-relaxed mb-4">
+                            {goal.description}
+                          </p>
+                        </div>
+                        <div className="md:w-1/3">
+                          <h4 className="font-semibold text-qatar-navy mb-3">Key Milestones:</h4>
+                          <ul className="space-y-2">
+                            {goal.milestones.map((milestone, idx) => (
+                              <li key={idx} className="flex items-center text-sm">
+                                <CheckCircle className="w-4 h-4 text-green-600 mr-2 flex-shrink-0" />
+                                <span className="text-elegant">{milestone}</span>
               </li>
-              <li className="flex items-start">
-                <span className="text-blue-400 mr-3">•</span>
-                Blockchain security and smart contract analysis
-              </li>
-              <li className="flex items-start">
-                <span className="text-blue-400 mr-3">•</span>
-                Threat hunting and advanced persistent threat (APT) research
-              </li>
-              <li className="flex items-start">
-                <span className="text-blue-400 mr-3">•</span>
-                Cybersecurity conferences and capture-the-flag competitions
-              </li>
-              <li className="flex items-start">
-                <span className="text-blue-400 mr-3">•</span>
-                Open source security tools development and contribution
-              </li>
+                            ))}
             </ul>
           </div>
         </div>
+                    </div>
+                  ))}
+                </div>
+                
+                {/* Call to Action */}
+                <div className="text-center mt-16">
+                  <div className="card-elegant p-8 bg-gradient-to-r from-qatar-navy to-qatar-maroon text-white">
+                    <h3 className="text-2xl font-serif font-bold mb-4">
+                      Ready to Collaborate?
+                    </h3>
+                    <p className="text-lg mb-6 opacity-90">
+                      I'm always excited to discuss new opportunities, share knowledge, and work on challenging cybersecurity projects.
+                    </p>
+                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                      <a
+                        href="/contact"
+                        className="bg-white text-qatar-navy px-6 py-3 rounded-lg font-semibold hover:bg-qatar-beige transition-all duration-300 inline-flex items-center justify-center"
+                      >
+                        Get In Touch
+                        <ArrowRight className="ml-2 w-4 h-4" />
+                      </a>
+                      <a
+                        href="/projects"
+                        className="border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-qatar-navy transition-all duration-300 inline-flex items-center justify-center"
+                      >
+                        View My Work
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
       </div>
     </div>
+      </section>
+    </Layout>
   );
 }
