@@ -83,7 +83,7 @@ export default function Home() {
 
         <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold mb-4 sm:mb-6 font-['Orbitron']">
           <span className="block text-white mb-2">Hi, I'm</span>
-          <span className="holographic text-4xl sm:text-6xl md:text-8xl motion-safe:animate-pulse-glow">
+          <span className="text-cyan-400 drop-shadow-[0_0_20px_rgba(0,255,255,0.8)] font-extrabold">
             JABER FAROOQI
           </span>
         </h1>
