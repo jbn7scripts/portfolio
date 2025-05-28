@@ -1,5 +1,5 @@
 const CyberButton = ({ children, href, onClick, className = "", variant = "primary" }) => {
-  const baseClasses = "relative px-8 py-3 font-bold text-white uppercase tracking-wider transition-all duration-300 transform hover:scale-105 overflow-hidden group";
+  const baseClasses = "relative px-8 py-3 font-bold text-white uppercase tracking-wider transition-all duration-300 transform hover:scale-105 overflow-hidden group min-h-[48px] text-base sm:text-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2";
   
   const variants = {
     primary: "bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400",

@@ -102,13 +102,13 @@ const AdvancedLayout = ({ children, title = "Jaber Ali Farooqi - Cybersecurity E
 
           {/* Mobile Navigation */}
           {isMenuOpen && (
-            <div className="md:hidden bg-black/95 backdrop-blur-md border-t border-cyan-500/30">
-              <div className="px-4 pt-2 pb-3 space-y-1">
+            <div className="md:hidden bg-black/95 backdrop-blur-md border-t border-cyan-500/30 w-full left-0 absolute">
+              <div className="px-4 pt-2 pb-3 space-y-2">
                 {navigation.map((item) => (
                   <Link
                     key={item.name}
                     href={item.href}
-                    className={`flex items-center px-3 py-3 rounded-lg font-medium transition-all duration-300 ${
+                    className={`flex items-center px-5 py-4 rounded-xl font-semibold text-lg transition-all duration-300 w-full justify-center ${
                       router.pathname === item.href
                         ? 'text-cyan-400 bg-cyan-400/10 neon-border'
                         : 'text-gray-300 hover:text-cyan-400 hover:bg-cyan-400/5'
