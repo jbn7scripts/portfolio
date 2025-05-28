@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { ArrowRight, Download, Shield, Zap, Database, Globe, Target, Lock, Eye, Cpu, Wifi, Code, Terminal, Activity } from 'lucide-react';
 import { useInView } from 'react-intersection-observer';
+import CyberButton from '../components/CyberButton';
 
 export default function Home() {
   const [typewriterText, setTypewriterText] = useState('');
