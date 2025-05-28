@@ -197,5 +197,3 @@ Jaber Ali Farooqi
 - GitHub: [jaberfarooqi](https://github.com/jaberfarooqi)
 
 ---
-
-Made with ❤️ and ☕ by Jaber Ali Farooqi 
