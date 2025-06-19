@@ -1,6 +1,9 @@
 import AdvancedLayout from '../components/AdvancedLayout';
 import Testimonials from '../components/Testimonials';
 import SkillsVisualization from '../components/SkillsVisualization';
+import AnimatedSection from '../components/AnimatedSection';
+import AnimatedSkillBar from '../components/AnimatedSkillBar';
+import EnhancedButton from '../components/EnhancedButton';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
@@ -54,10 +57,10 @@ export default function Home() {
 
   const titles = [
     "Computer Science Graduate",
-    "Cybersecurity Enthusiast", 
-    "Technology Professional",
+    "Technology Enthusiast", 
+    "Software Developer",
     "Security Researcher",
-    "Software Developer"
+    "Problem Solver"
   ];
 
   const stats = [
@@ -85,6 +88,15 @@ export default function Home() {
       icon: <Award className="w-6 h-6" />,
       description: "PwC and Sidra Holding experience"
     },
+  ];
+
+  const skills = [
+    { skill: "JavaScript/React", percentage: 85, color: "qatar-maroon" },
+    { skill: "Python", percentage: 80, color: "midnight-navy" },
+    { skill: "Node.js", percentage: 75, color: "gold-accent" },
+    { skill: "SQL/Databases", percentage: 70, color: "royal-blue" },
+    { skill: "Cybersecurity", percentage: 65, color: "teal-blue" },
+    { skill: "DevOps", percentage: 60, color: "qatar-maroon" }
   ];
 
   const education = [
@@ -209,7 +221,7 @@ export default function Home() {
 
   const quickLinks = [
     { name: "View Projects", href: "/projects", icon: <Briefcase className="w-5 h-5" /> },
-    { name: "Download Resume", href: "/JaberAliFarooqi_CV.pdf", icon: <FileText className="w-5 h-5" /> },
+    { name: "Download Resume", href: "/websiteresume.pdf", icon: <FileText className="w-5 h-5" /> },
     { name: "Get In Touch", href: "/contact", icon: <MessageCircle className="w-5 h-5" /> },
     { name: "About Me", href: "/about", icon: <Users className="w-5 h-5" /> }
   ];
@@ -246,17 +258,17 @@ export default function Home() {
   return (
     <>
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-qatar-beige via-white to-qatar-beige/50 relative overflow-hidden">
+      <AnimatedSection className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-soft-beige via-white to-soft-beige/50 relative overflow-hidden" animation="fadeInUp">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute inset-0" style={{
             backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
           }}></div>
-                </div>
+        </div>
 
         <div ref={heroRef} className={`text-center max-w-6xl mx-auto relative z-10 ${heroHasBeenInView ? 'animate-fade-in' : 'opacity-0'}`}>
           {/* Main Heading */}
-          <div className="mb-8">
+          <AnimatedSection className="mb-8" animation="fadeInUp" delay={0.2}>
             <h1 className="text-6xl sm:text-8xl font-serif font-bold heading-primary mb-6 leading-tight">
               Jaber Farooqi
             </h1>
@@ -269,36 +281,38 @@ export default function Home() {
             </div>
             
             <p className="text-xl sm:text-2xl text-elegant max-w-4xl mx-auto mb-12 leading-relaxed">
-              Recent Computer Science graduate with a passion for cybersecurity and technology. 
-              <span className="block mt-4 text-lg text-qatar-gray">
+              Recent Computer Science graduate with a passion for technology and innovation. 
+              <span className="block mt-4 text-lg text-charcoal/70">
                 Based in London • Seeking opportunities • Eager to learn and grow
               </span>
             </p>
-          </div>
+          </AnimatedSection>
 
           {/* Quick Actions */}
-          <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16">
-            <Link
-              href="/projects"
-              className="btn-primary inline-flex items-center text-lg px-8 py-4 group"
+          <AnimatedSection className="flex flex-col sm:flex-row gap-6 justify-center mb-16" animation="fadeInUp" delay={0.4}>
+            <EnhancedButton
+              variant="primary"
+              size="lg"
+              className="inline-flex items-center text-lg px-8 py-4"
+              onClick={() => window.location.href = '/projects'}
             >
-              <Eye className="mr-2 w-5 h-5 group-hover:scale-110 transition-transform" />
+              <Eye className="mr-2 w-5 h-5" />
               View My Work
-              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Link>
-            <a
-              href="/JaberAliFarooqi_CV.pdf"
-              className="btn-secondary inline-flex items-center text-lg px-8 py-4 group"
-              target="_blank"
-              rel="noopener noreferrer"
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </EnhancedButton>
+            <EnhancedButton
+              variant="outline"
+              size="lg"
+              className="inline-flex items-center text-lg px-8 py-4"
+              onClick={() => window.open('/websiteresume.pdf', '_blank')}
             >
-              <Download className="mr-2 w-5 h-5 group-hover:scale-110 transition-transform" />
+              <Download className="mr-2 w-5 h-5" />
               Download Resume
-            </a>
-          </div>
+            </EnhancedButton>
+          </AnimatedSection>
           
           {/* Quick Links */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto mb-16">
+          <AnimatedSection className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto mb-16" animation="fadeInUp" delay={0.6}>
             {quickLinks.map((link, index) => (
               <Link
                 key={link.name}
@@ -308,48 +322,72 @@ export default function Home() {
                 <div className="text-qatar-maroon mb-2 flex justify-center group-hover:scale-110 transition-transform">
                   {link.icon}
                 </div>
-                <div className="text-sm font-medium text-qatar-navy group-hover:text-qatar-maroon transition-colors">
+                <div className="text-sm font-medium text-midnight-navy group-hover:text-qatar-maroon transition-colors">
                   {link.name}
                 </div>
               </Link>
             ))}
-          </div>
+          </AnimatedSection>
 
           {/* Professional Stats */}
-          <div ref={statsRef} className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
+          <AnimatedSection className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto" animation="fadeInUp" delay={0.8}>
             {stats.map((stat, index) => (
               <div
                 key={stat.label}
-                className={`card-elegant p-6 text-center hover:shadow-elegant-lg transition-all duration-300 group ${
-                  statsHasBeenInView ? 'animate-scale-in' : 'opacity-0'
-                }`}
-                style={{ animationDelay: `${index * 0.1}s` }}
+                className="card-elegant p-6 text-center hover:shadow-elegant-lg transition-all duration-300 group"
               >
                 <div className="text-qatar-maroon mb-3 flex justify-center group-hover:scale-110 transition-transform">
                   {stat.icon}
                 </div>
                 <div className="text-3xl sm:text-4xl font-bold heading-primary mb-2">{stat.value}</div>
                 <div className="text-sm text-elegant font-medium mb-2">{stat.label}</div>
-                <div className="text-xs text-qatar-gray leading-tight">{stat.description}</div>
+                <div className="text-xs text-charcoal/70 leading-tight">{stat.description}</div>
               </div>
             ))}
-          </div>
+          </AnimatedSection>
         </div>
 
         {/* Scroll Indicator */}
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <div className="w-6 h-10 border-2 border-qatar-navy rounded-full flex justify-center">
-            <div className="w-1 h-3 bg-qatar-navy rounded-full mt-2 animate-pulse"></div>
+          <div className="w-6 h-10 border-2 border-midnight-navy rounded-full flex justify-center">
+            <div className="w-1 h-3 bg-midnight-navy rounded-full mt-2 animate-pulse"></div>
           </div>
         </div>
-      </section>
+      </AnimatedSection>
+
+      {/* Skills Section */}
+      <AnimatedSection className="py-20 px-4 sm:px-6 lg:px-8 bg-white" animation="fadeInUp">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl sm:text-5xl font-serif font-bold heading-primary mb-4">
+              Technical Expertise
+            </h2>
+            <div className="section-divider"></div>
+            <p className="text-lg text-elegant max-w-3xl mx-auto">
+              A comprehensive skill set developed through academic projects, internships, and continuous learning.
+            </p>
+          </div>
+          
+          <div className="space-y-6">
+            {skills.map((skill, index) => (
+              <AnimatedSkillBar
+                key={skill.skill}
+                skill={skill.skill}
+                percentage={skill.percentage}
+                color={skill.color}
+                delay={index * 0.1}
+              />
+            ))}
+          </div>
+        </div>
+      </AnimatedSection>
 
       {/* Education Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+      <AnimatedSection className="py-20 px-4 sm:px-6 lg:px-8 bg-soft-beige/30" animation="fadeInUp">
         <div className="max-w-7xl mx-auto">
-          <div ref={educationRef} className={`text-center mb-16 ${educationHasBeenInView ? 'animate-fade-in' : 'opacity-0'}`}>
+          <div className="text-center mb-16">
             <h2 className="text-4xl sm:text-5xl font-serif font-bold heading-primary mb-4">
-              Education
+              Education & Skills
             </h2>
             <div className="section-divider"></div>
             <p className="text-lg text-elegant max-w-3xl mx-auto">
@@ -360,43 +398,42 @@ export default function Home() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {education.map((edu, index) => (
-              <div
+              <AnimatedSection
                 key={edu.title}
-                className={`card-elegant p-8 hover:shadow-elegant-xl transition-all duration-300 group ${
-                  educationHasBeenInView ? 'animate-slide-up' : 'opacity-0'
-                }`}
-                style={{ animationDelay: `${index * 0.1}s` }}
+                className="card-elegant p-8 hover:shadow-elegant-xl transition-all duration-300 group"
+                animation="slideUp"
+                delay={index * 0.1}
               >
                 <div className="text-qatar-maroon mb-6 flex justify-center group-hover:scale-110 transition-transform">
                   {edu.icon}
-                  </div>
+                </div>
                 <h3 className="text-xl font-serif font-bold heading-secondary mb-4 text-center">
                   {edu.title}
-                  </h3>
+                </h3>
                 <p className="text-elegant mb-6 leading-relaxed text-center">
                   {edu.description}
                 </p>
                 
                 <div className="space-y-4">
                   <div>
-                    <h4 className="font-semibold text-qatar-navy text-sm mb-2">Key Features:</h4>
+                    <h4 className="font-semibold text-midnight-navy text-sm mb-2">Key Features:</h4>
                     <ul className="text-sm text-elegant space-y-1">
                       {edu.features.map((feature, idx) => (
                         <li key={idx} className="flex items-center">
                           <CheckCircle className="w-4 h-4 text-green-600 mr-2 flex-shrink-0" />
                           {feature}
-                      </li>
-                    ))}
-                  </ul>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                   
                   <div>
-                    <h4 className="font-semibold text-qatar-navy text-sm mb-2">Tools Used:</h4>
+                    <h4 className="font-semibold text-midnight-navy text-sm mb-2">Tools Used:</h4>
                     <div className="flex flex-wrap gap-1">
                       {edu.tools.map((tool, idx) => (
                         <span
                           key={idx}
-                          className="px-2 py-1 bg-qatar-beige text-qatar-navy rounded text-xs font-medium"
+                          className="px-2 py-1 bg-soft-beige text-midnight-navy rounded text-xs font-medium"
                         >
                           {tool}
                         </span>
@@ -404,256 +441,166 @@ export default function Home() {
                     </div>
                   </div>
                   
-                  <div className="pt-4 border-t border-gray-100">
-                    <div className="text-xs text-qatar-gray">
-                      <strong>Deliverable:</strong> {edu.deliverables}
-                    </div>
+                  <div>
+                    <h4 className="font-semibold text-midnight-navy text-sm mb-2">Deliverables:</h4>
+                    <p className="text-sm text-elegant">{edu.deliverables}</p>
                   </div>
                 </div>
-              </div>
+              </AnimatedSection>
             ))}
           </div>
         </div>
-      </section>
+      </AnimatedSection>
 
-      {/* Skills Visualization */}
-      <SkillsVisualization />
-
-      {/* Featured Projects */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-qatar-beige to-white">
+      {/* Featured Projects Section */}
+      <AnimatedSection className="py-20 px-4 sm:px-6 lg:px-8 bg-white" animation="fadeInUp">
         <div className="max-w-7xl mx-auto">
-          <div ref={projectsRef} className={`text-center mb-16 ${projectsHasBeenInView ? 'animate-fade-in' : 'opacity-0'}`}>
+          <div className="text-center mb-16">
             <h2 className="text-4xl sm:text-5xl font-serif font-bold heading-primary mb-4">
               Featured Projects
             </h2>
             <div className="section-divider"></div>
             <p className="text-lg text-elegant max-w-3xl mx-auto">
-              Academic and personal projects demonstrating practical application of cybersecurity concepts, 
-              programming skills, and problem-solving abilities developed through coursework and self-directed learning.
+              A selection of my most impactful projects showcasing technical skills and problem-solving abilities.
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {featuredProjects.map((project, index) => (
-              <div
+              <AnimatedSection
                 key={project.title}
-                className={`card-elegant p-0 overflow-hidden hover:shadow-elegant-xl transition-all duration-300 group ${
-                  projectsHasBeenInView ? 'animate-slide-up' : 'opacity-0'
-                }`}
-                style={{ animationDelay: `${index * 0.2}s` }}
+                className="card-elegant overflow-hidden hover:shadow-elegant-xl transition-all duration-300"
+                animation="scaleIn"
+                delay={index * 0.2}
               >
-                {/* Project Image Placeholder */}
-                <div className="h-48 bg-gradient-to-br from-qatar-navy to-qatar-maroon flex items-center justify-center relative overflow-hidden">
-                  <div className="text-6xl font-bold text-white opacity-20">
-                    {project.title.split(' ').map(word => word[0]).join('').slice(0, 3)}
-                  </div>
-                  <div className="absolute top-4 right-4">
-                    <span className={`px-3 py-1 rounded-full text-xs font-medium ${
-                      project.status === 'Production' ? 'bg-green-100 text-green-800' :
-                      project.status === 'Active' ? 'bg-blue-100 text-blue-800' :
-                      'bg-gray-100 text-gray-800'
-                    }`}>
+                <div className="h-48 bg-gradient-to-br from-qatar-maroon to-midnight-navy flex items-center justify-center">
+                  <div className="text-white text-center">
+                    <h3 className="text-xl font-bold mb-2">{project.title}</h3>
+                    <span className="px-3 py-1 bg-white/20 rounded-full text-sm">
                       {project.status}
                     </span>
                   </div>
                 </div>
-                
                 <div className="p-6">
-                  <h3 className="text-lg font-serif font-bold heading-secondary mb-3">
-                    {project.title}
-                  </h3>
-                  <p className="text-elegant mb-4 text-sm leading-relaxed">
-                    {project.description}
-                  </p>
-                  
-                  <div className="mb-4">
-                    <div className="flex flex-wrap gap-2">
-                      {project.technologies.map((tech, idx) => (
-                        <span
-                          key={idx}
-                          className="px-2 py-1 bg-qatar-beige text-qatar-navy rounded text-xs font-medium"
-                        >
-                          {tech}
-                    </span>
-                      ))}
-                    </div>
+                  <p className="text-elegant mb-4">{project.description}</p>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {project.technologies.map((tech, idx) => (
+                      <span
+                        key={idx}
+                        className="px-2 py-1 bg-soft-beige text-midnight-navy rounded text-xs font-medium"
+                      >
+                        {tech}
+                      </span>
+                    ))}
                   </div>
-                  
-                  <div className="flex items-center justify-between">
-                    <div className="text-xs text-qatar-gray">
-                      <strong>Impact:</strong> {project.impact}
-                    </div>
-                    <Link
-                      href={project.link}
-                      className="text-qatar-maroon hover:text-qatar-navy transition-colors text-sm font-medium flex items-center group"
-                    >
-                      View Details
-                      <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
-                    </Link>
-                  </div>
+                  <p className="text-sm text-charcoal/70 mb-4">{project.impact}</p>
+                  <EnhancedButton
+                    variant="outline"
+                    size="sm"
+                    className="w-full"
+                    onClick={() => window.location.href = project.link}
+                  >
+                    View Details
+                    <ArrowRight className="ml-2 w-4 h-4" />
+                  </EnhancedButton>
                 </div>
-              </div>
+              </AnimatedSection>
             ))}
           </div>
           
-          <div className="text-center">
-            <Link
-              href="/projects"
-              className="btn-primary inline-flex items-center text-lg group"
+          <div className="text-center mt-12">
+            <EnhancedButton
+              variant="primary"
+              size="lg"
+              onClick={() => window.location.href = '/projects'}
             >
               View All Projects
-              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Link>
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </EnhancedButton>
           </div>
         </div>
-      </section>
+      </AnimatedSection>
 
-      {/* Professional Experience Preview */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div ref={experienceRef} className={`text-center mb-16 ${experienceHasBeenInView ? 'animate-fade-in' : 'opacity-0'}`}>
+      {/* Experience Section */}
+      <AnimatedSection className="py-20 px-4 sm:px-6 lg:px-8 bg-soft-beige/30" animation="fadeInUp">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-16">
             <h2 className="text-4xl sm:text-5xl font-serif font-bold heading-primary mb-4">
               Professional Experience
             </h2>
             <div className="section-divider"></div>
             <p className="text-lg text-elegant max-w-3xl mx-auto">
-              Valuable internship experience at prestigious organizations including PwC and Sidra Holding, 
-              providing exposure to enterprise technology and cybersecurity practices.
+              Real-world experience gained through internships and part-time roles in technology and consulting.
             </p>
           </div>
           
-          <div className="space-y-8 mb-12">
+          <div className="space-y-8">
             {experience.map((exp, index) => (
-              <div
-                key={index}
-                className={`card-elegant p-8 hover:shadow-elegant-lg transition-all duration-300 ${
-                  experienceHasBeenInView ? 'animate-slide-in-left' : 'opacity-0'
-                }`}
-                style={{ animationDelay: `${index * 0.2}s` }}
+              <AnimatedSection
+                key={exp.role}
+                className="card-elegant p-8 hover:shadow-elegant-lg transition-all duration-300"
+                animation="fadeInLeft"
+                delay={index * 0.2}
               >
-                <div className="flex flex-col lg:flex-row gap-8">
-                  <div className="lg:w-1/3">
-                    <div className="flex items-center mb-2">
-                      <div className="w-3 h-3 bg-qatar-maroon rounded-full mr-3"></div>
-                      <span className="text-sm font-medium text-qatar-maroon">{exp.period}</span>
-                    </div>
-                    <h3 className="text-xl font-serif font-bold heading-secondary mb-2">
-                      {exp.role}
-                    </h3>
-                    <h4 className="text-lg font-semibold text-qatar-navy mb-2">
-                      {exp.company}
-                    </h4>
-                    <div className="flex items-center text-elegant mb-2">
-                      <MapPin className="w-4 h-4 mr-1" />
-                      {exp.location}
-                    </div>
-                    <span className="inline-block px-3 py-1 bg-qatar-beige text-qatar-navy rounded-full text-sm font-medium">
+                <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                  <div>
+                    <h3 className="text-xl font-serif font-bold heading-secondary">{exp.role}</h3>
+                    <p className="text-qatar-maroon font-medium">{exp.company}</p>
+                  </div>
+                  <div className="text-right mt-2 md:mt-0">
+                    <p className="text-sm text-charcoal/70">{exp.period}</p>
+                    <p className="text-sm text-charcoal/70">{exp.location}</p>
+                    <span className="inline-block px-3 py-1 bg-qatar-maroon/10 text-qatar-maroon rounded-full text-xs font-medium mt-1">
                       {exp.type}
                     </span>
                   </div>
-                  
-                  <div className="lg:w-2/3">
-                    <h5 className="font-semibold text-qatar-navy mb-4">Key Achievements:</h5>
-                    <ul className="space-y-3">
-                      {exp.highlights.map((highlight, idx) => (
-                        <li key={idx} className="flex items-start">
-                          <CheckCircle className="w-5 h-5 text-green-600 mr-3 flex-shrink-0 mt-0.5" />
-                          <span className="text-elegant">{highlight}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
                 </div>
-              </div>
+                
+                <ul className="space-y-2">
+                  {exp.highlights.map((highlight, idx) => (
+                    <li key={idx} className="flex items-start">
+                      <CheckCircle className="w-4 h-4 text-green-600 mr-2 flex-shrink-0 mt-0.5" />
+                      <span className="text-elegant">{highlight}</span>
+                    </li>
+                  ))}
+                </ul>
+              </AnimatedSection>
             ))}
           </div>
-          
-          <div className="text-center">
-            <Link
-              href="/resume"
-              className="btn-secondary inline-flex items-center text-lg group"
-            >
-              View Complete Resume
-              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </div>
-            </div>
-      </section>
+        </div>
+      </AnimatedSection>
 
-      {/* Testimonials */}
-      <Testimonials limit={3} />
-
-      {/* Contact CTA */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 gradient-qatar text-white relative overflow-hidden">
-        {/* Overlay for contrast */}
-        <div className="absolute inset-0 bg-black/40 z-0"></div>
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-10 z-0">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-          }}></div>
-              </div>
-        <div className="max-w-6xl mx-auto text-center relative z-10">
-          <h2 className="text-4xl sm:text-5xl font-serif font-bold mb-6" style={{textShadow: '0 2px 8px rgba(0,0,0,0.25)'}}>
-            Ready to Start My Professional Journey?
+      {/* Call to Action */}
+      <AnimatedSection className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-qatar-maroon to-midnight-navy text-white" animation="fadeInUp">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-4xl sm:text-5xl font-serif font-bold mb-6">
+            Ready to Work Together?
           </h2>
-          <p className="text-xl mb-12 leading-relaxed opacity-90 max-w-4xl mx-auto" style={{textShadow: '0 1px 4px rgba(0,0,0,0.18)'}}>
-            I'm excited to bring my academic knowledge, technical skills, and passion for cybersecurity 
-            to your organization. Let's discuss how I can contribute to your team and grow together.
+          <p className="text-xl mb-8 text-white/90">
+            I'm always interested in new opportunities and exciting projects. 
+            Let's discuss how we can collaborate!
           </p>
-          
-          {/* Contact Options */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-            <a
-              href="mailto:Jaberfarooqi@hotmail.com"
-              className="bg-white/10 backdrop-blur-sm p-6 rounded-lg hover:bg-white/20 transition-all duration-300 group"
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <EnhancedButton
+              variant="accent"
+              size="lg"
+              onClick={() => window.location.href = '/contact'}
             >
-              <Mail className="w-8 h-8 mx-auto mb-4 group-hover:scale-110 transition-transform" />
-              <div className="font-semibold mb-2">Email</div>
-              <div className="text-sm opacity-80">Jaberfarooqi@hotmail.com</div>
-              <div className="text-xs opacity-60 mt-2">Response within 24 hours</div>
-            </a>
-            
-            <a
-              href="tel:+447745690989"
-              className="bg-white/10 backdrop-blur-sm p-6 rounded-lg hover:bg-white/20 transition-all duration-300 group"
-            >
-              <Phone className="w-8 h-8 mx-auto mb-4 group-hover:scale-110 transition-transform" />
-              <div className="font-semibold mb-2">Phone</div>
-              <div className="text-sm opacity-80">+44(0)7745690989</div>
-              <div className="text-xs opacity-60 mt-2">Mon-Fri, 9:00 AM - 6:00 PM GMT</div>
-            </a>
-            
-            <Link
-              href="/contact"
-              className="bg-white/10 backdrop-blur-sm p-6 rounded-lg hover:bg-white/20 transition-all duration-300 group"
-            >
-              <MessageCircle className="w-8 h-8 mx-auto mb-4 group-hover:scale-110 transition-transform" />
-              <div className="font-semibold mb-2">Contact Form</div>
-              <div className="text-sm opacity-80">Secure messaging</div>
-              <div className="text-xs opacity-60 mt-2">Priority-based response</div>
-            </Link>
-            </div>
-          
-          <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <Link
-              href="/contact"
-              className="bg-qatar-maroon text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-qatar-navy transition-all duration-300 inline-flex items-center justify-center group"
-            >
-              <MessageCircle className="mr-2 w-5 h-5 group-hover:scale-110 transition-transform" />
               Get In Touch
-              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Link>
-            <Link
-              href="/projects"
-              className="border-2 border-qatar-maroon text-qatar-maroon px-8 py-4 rounded-lg font-semibold text-lg hover:bg-qatar-maroon hover:text-white transition-all duration-300 inline-flex items-center justify-center group"
+              <Mail className="ml-2 w-5 h-5" />
+            </EnhancedButton>
+            <EnhancedButton
+              variant="outline"
+              size="lg"
+              className="border-white text-white hover:bg-white hover:text-qatar-maroon"
+              onClick={() => window.open('/websiteresume.pdf', '_blank')}
             >
-              <Eye className="mr-2 w-5 h-5 group-hover:scale-110 transition-transform" />
-              Explore My Work
-            </Link>
+              Download Resume
+              <Download className="ml-2 w-5 h-5" />
+            </EnhancedButton>
           </div>
         </div>
-      </section>
+      </AnimatedSection>
     </>
   );
 }
