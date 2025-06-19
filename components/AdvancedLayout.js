@@ -25,7 +25,7 @@ import {
 
 const AdvancedLayout = ({ 
   children, 
-  title = "Jaber Farooqi - Cybersecurity Professional", 
+  title = "Jaber Farooqi - Technology Enthusiast", 
   description = "Experienced Cybersecurity Analyst and Penetration Testing Specialist based in London, UK. Expertise in network security, AI-powered threat detection, and enterprise security solutions."
 }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -50,7 +50,7 @@ const AdvancedLayout = ({
     },
     {
       name: 'LinkedIn',
-      href: 'https://linkedin.com/in/jaberfarooqi',
+      href: 'https://www.linkedin.com/in/jaberalifarooqi',
       icon: <Linkedin size={20} />,
       description: 'Professional network'
     },
@@ -132,7 +132,7 @@ const AdvancedLayout = ({
                     Jaber Farooqi
                   </div>
                   <div className="text-xs text-charcoal font-medium">
-                    Cybersecurity Professional
+                    Technology Enthusiast
                   </div>
                 </div>
               </Link>
@@ -289,7 +289,7 @@ const AdvancedLayout = ({
                       Jaber Farooqi
                     </div>
                     <div className="text-xs text-charcoal font-medium">
-                      Cybersecurity Professional
+                      Technology Enthusiast
                     </div>
                   </div>
                 </div>

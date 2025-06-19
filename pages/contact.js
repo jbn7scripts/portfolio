@@ -67,9 +67,9 @@ export default function Contact() {
     {
       title: "LinkedIn",
       description: "Professional networking and career opportunities",
-      value: "linkedin.com/in/jaberfarooqi",
+      value: "linkedin.com/in/jaberalifarooqi",
       icon: <Linkedin className="w-6 h-6" />,
-      href: "https://linkedin.com/in/jaberfarooqi",
+      href: "https://www.linkedin.com/in/jaberalifarooqi",
       available: "Professional inquiries welcome"
     }
   ];

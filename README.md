@@ -193,7 +193,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 Jaber Ali Farooqi
 - Email: Jaberfarooqi@hotmail.com
-- LinkedIn: [jaberfarooqi](https://linkedin.com/in/jaberfarooqi)
+- LinkedIn: [jaberalifarooqi](https://www.linkedin.com/in/jaberalifarooqi)
 - GitHub: [jbn7scripts](https://github.com/jbn7scripts)
 
 ---
