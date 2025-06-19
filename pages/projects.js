@@ -1,4 +1,3 @@
-import Layout from '../components/Layout';
 import { useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { 
@@ -22,7 +21,10 @@ import {
   Zap,
   Search,
   Filter,
-  ArrowRight
+  ArrowRight,
+  BookOpen,
+  Lightbulb,
+  User
 } from 'lucide-react';
 
 export default function Projects() {
@@ -33,280 +35,281 @@ export default function Projects() {
 
   const categories = [
     { id: 'all', label: 'All Projects', count: 6 },
-    { id: 'ai-ml', label: 'AI/ML Security', count: 2 },
-    { id: 'network', label: 'Network Security', count: 2 },
-    { id: 'pentesting', label: 'Penetration Testing', count: 1 },
-    { id: 'blockchain', label: 'Blockchain Security', count: 1 }
+    { id: 'academic', label: 'Academic Projects', count: 3 },
+    { id: 'learning', label: 'Learning Projects', count: 2 },
+    { id: 'personal', label: 'Personal Projects', count: 1 }
   ];
 
   const projects = [
     {
       id: 1,
-      title: "Neural Network Intrusion Detection System",
-      category: "ai-ml",
-      status: "Production",
-      duration: "6 months",
+      title: "Network Security Monitoring Tool",
+      category: "academic",
+      status: "Academic Project",
+      duration: "3 months",
       team: "Solo Project",
-      description: "Advanced AI-powered intrusion detection system using deep learning algorithms to identify and classify network threats in real-time with 99.2% accuracy.",
-      detailedDescription: "This comprehensive intrusion detection system leverages cutting-edge machine learning techniques to analyze network traffic patterns and identify potential security threats. The system processes over 10,000 network packets per second and uses ensemble learning methods combining CNN and LSTM networks for superior threat detection.",
+      description: "Basic network traffic analyzer developed as part of computer networks coursework to understand network protocols and security monitoring.",
+      detailedDescription: "This project was developed during my computer networks course to gain practical understanding of network protocols, packet analysis, and basic security monitoring. The tool captures and analyzes network traffic to identify potential security issues and unusual patterns.",
       objectives: [
-        "Develop real-time threat detection with minimal false positives",
-        "Create adaptive learning system that improves with new threats",
-        "Implement automated response mechanisms for critical threats",
-        "Design scalable architecture for enterprise deployment"
+        "Learn network protocol analysis and packet inspection",
+        "Understand basic network security concepts",
+        "Develop practical skills in network monitoring",
+        "Create a functional security analysis tool"
       ],
-      technologies: ["Python", "TensorFlow", "Scikit-learn", "Wireshark", "Pandas", "NumPy", "Keras", "Docker"],
+      technologies: ["Python", "Wireshark", "SQLite", "Tkinter", "Scapy", "Matplotlib"],
       features: [
-        "Real-time network traffic analysis and anomaly detection",
-        "Machine learning model with 99.2% accuracy in threat identification",
-        "Automated threat classification and severity assessment",
-        "Interactive dashboard for security monitoring and reporting",
-        "API integration for SIEM systems and security tools",
-        "Continuous learning from new threat patterns"
+        "Real-time network packet capture and analysis",
+        "Basic protocol identification and classification",
+        "Simple anomaly detection for unusual traffic patterns",
+        "User-friendly GUI for monitoring and reporting",
+        "Data storage and historical analysis capabilities",
+        "Basic alert system for suspicious activities"
       ],
       achievements: [
-        "Reduced false positive rate by 75% compared to traditional IDS",
-        "Detected 15+ zero-day attacks during testing phase",
-        "Successfully deployed in university network infrastructure",
-        "Published research paper on novel detection algorithms"
+        "Successfully captured and analyzed network traffic",
+        "Identified common network protocols and their characteristics",
+        "Developed understanding of network security fundamentals",
+        "Received high marks for practical implementation"
       ],
       challenges: [
-        "Handling massive datasets while maintaining real-time performance",
-        "Balancing detection accuracy with computational efficiency",
-        "Adapting to new attack vectors without prior training data"
+        "Learning complex network protocols and packet structures",
+        "Handling large volumes of network data efficiently",
+        "Creating an intuitive user interface for data visualization"
       ],
       results: [
-        "99.2% threat detection accuracy",
-        "Sub-second response time for critical threats",
-        "50% reduction in security incident response time",
-        "Zero false positives for known attack patterns"
+        "Functional network monitoring tool",
+        "Improved understanding of network security",
+        "Practical experience with Python networking libraries",
+        "Academic project completed successfully"
       ],
-      github: "https://github.com/jaberfarooqi/neural-ids",
-      demo: "https://neural-ids-demo.jaberfarooqi.com",
-      documentation: "/docs/neural-ids-whitepaper.pdf"
+      github: "https://github.com/jbn7scripts/network-monitor",
+      demo: null,
+      documentation: null
     },
     {
       id: 2,
-      title: "Blockchain Security Analysis Framework",
-      category: "blockchain",
-      status: "Active Development",
-      duration: "4 months",
-      team: "Lead Developer",
-      description: "Comprehensive security analysis tool for smart contracts and blockchain applications with automated vulnerability detection and detailed reporting.",
-      detailedDescription: "This framework provides comprehensive security analysis for blockchain applications, focusing on smart contract vulnerabilities, consensus mechanism weaknesses, and cryptocurrency transaction security. The tool integrates with major blockchain networks and provides detailed security assessments.",
+      title: "Web Application Security Scanner",
+      category: "learning",
+      status: "Learning Project",
+      duration: "2 months",
+      team: "Solo Project",
+      description: "Educational tool for identifying common web vulnerabilities like SQL injection, XSS, and CSRF attacks.",
+      detailedDescription: "This project was developed to learn about web application security and common vulnerabilities. It includes basic scanning capabilities for educational purposes and helps understand how web attacks work and how to prevent them.",
       objectives: [
-        "Automate smart contract vulnerability detection",
-        "Provide comprehensive blockchain security auditing",
-        "Create standardized security assessment framework",
-        "Enable continuous security monitoring for DeFi applications"
+        "Learn about common web application vulnerabilities",
+        "Understand how security scanning tools work",
+        "Develop practical web security knowledge",
+        "Create educational security testing tool"
       ],
-      technologies: ["Python", "Solidity", "Web3.py", "Ethereum", "Brownie", "Slither", "MythX", "Node.js"],
+      technologies: ["Python", "Flask", "SQLite", "HTML/CSS", "JavaScript", "Requests", "BeautifulSoup"],
       features: [
-        "Automated smart contract vulnerability scanning",
-        "Blockchain transaction pattern analysis",
-        "DeFi protocol security assessment",
-        "Real-time monitoring of blockchain networks",
-        "Comprehensive security reporting and recommendations",
-        "Integration with major blockchain development frameworks"
+        "Basic SQL injection vulnerability detection",
+        "Cross-site scripting (XSS) testing",
+        "Cross-site request forgery (CSRF) detection",
+        "Simple web crawler for link discovery",
+        "Basic vulnerability reporting interface",
+        "Educational explanations of found vulnerabilities"
       ],
       achievements: [
-        "Identified 200+ smart contract vulnerabilities across 50+ projects",
-        "Prevented potential losses of $2M+ in DeFi protocols",
-        "Developed novel detection algorithms for flash loan attacks",
-        "Contributed to 3 major DeFi protocol security improvements"
+        "Learned about web application security fundamentals",
+        "Developed understanding of common attack vectors",
+        "Created functional security testing tool",
+        "Gained practical experience with web technologies"
       ],
       challenges: [
-        "Keeping up with rapidly evolving blockchain technologies",
-        "Analyzing complex DeFi protocol interactions",
-        "Handling different blockchain network specifications"
+        "Understanding complex web security concepts",
+        "Implementing secure coding practices",
+        "Creating comprehensive vulnerability detection logic"
       ],
       results: [
-        "95% accuracy in vulnerability detection",
-        "Reduced smart contract audit time by 60%",
-        "Detected 5 critical zero-day vulnerabilities",
-        "Improved overall DeFi protocol security standards"
+        "Educational web security scanner",
+        "Improved web security knowledge",
+        "Practical experience with web development",
+        "Understanding of security testing methodologies"
       ],
-      github: "https://github.com/jaberfarooqi/blockchain-security-framework",
-      demo: "https://blockchain-security.jaberfarooqi.com",
-      documentation: "/docs/blockchain-security-framework.pdf"
+      github: "https://github.com/jbn7scripts/web-security-scanner",
+      demo: null,
+      documentation: null
     },
     {
       id: 3,
-      title: "Advanced Penetration Testing Suite",
-      category: "pentesting",
-      status: "Completed",
-      duration: "5 months",
+      title: "Portfolio Website",
+      category: "personal",
+      status: "Active",
+      duration: "1 month",
       team: "Solo Project",
-      description: "Comprehensive penetration testing toolkit with automated vulnerability assessment, exploitation modules, and detailed reporting capabilities.",
-      detailedDescription: "This advanced penetration testing suite combines multiple security testing methodologies into a unified platform. It includes automated reconnaissance, vulnerability scanning, exploitation frameworks, and comprehensive reporting tools designed for professional security assessments.",
+      description: "Personal portfolio website showcasing skills, projects, and professional information built with modern web technologies.",
+      detailedDescription: "This portfolio website demonstrates full-stack development skills using modern web technologies. It includes responsive design, interactive elements, and showcases my academic projects and skills in an engaging way.",
       objectives: [
-        "Streamline penetration testing workflow and methodology",
-        "Automate common security assessment tasks",
-        "Provide comprehensive vulnerability reporting",
-        "Create reusable testing modules for different environments"
+        "Create professional online presence",
+        "Demonstrate web development skills",
+        "Showcase academic projects and achievements",
+        "Learn modern web development frameworks"
       ],
-      technologies: ["Python", "Metasploit", "Nmap", "Burp Suite", "SQLmap", "Nikto", "Hydra", "Custom Scripts"],
+      technologies: ["Next.js", "React", "Tailwind CSS", "JavaScript", "HTML", "CSS", "Git"],
       features: [
-        "Automated network reconnaissance and discovery",
-        "Comprehensive vulnerability scanning and assessment",
-        "Exploitation module library with custom payloads",
-        "Professional penetration testing reports",
-        "Integration with popular security testing tools",
-        "Customizable testing workflows and methodologies"
+        "Responsive design for all devices",
+        "Interactive project showcase",
+        "Professional contact forms",
+        "Modern UI/UX design",
+        "SEO optimization",
+        "Fast loading and performance"
       ],
       achievements: [
-        "Successfully tested 100+ enterprise networks",
-        "Identified critical vulnerabilities in 85% of tested systems",
-        "Reduced penetration testing time by 40%",
-        "Created standardized reporting template adopted by security team"
+        "Successfully deployed professional portfolio",
+        "Demonstrated full-stack development skills",
+        "Created engaging user experience",
+        "Learned modern web development practices"
       ],
       challenges: [
-        "Ensuring ethical use and responsible disclosure",
-        "Adapting to different network architectures and security controls",
-        "Maintaining tool effectiveness against evolving defenses"
+        "Learning Next.js and React framework",
+        "Implementing responsive design",
+        "Optimizing performance and SEO"
       ],
       results: [
-        "98% success rate in identifying security weaknesses",
-        "Average 40% time reduction in penetration tests",
-        "100% client satisfaction with detailed reporting",
-        "Zero false positives in vulnerability identification"
+        "Professional portfolio website",
+        "Improved web development skills",
+        "Online presence for job applications",
+        "Practical experience with modern frameworks"
       ],
-      github: "https://github.com/jaberfarooqi/advanced-pentest-suite",
-      documentation: "/docs/penetration-testing-methodology.pdf"
+      github: "https://github.com/jbn7scripts/portfolio",
+      demo: "https://jaberfarooqi.com",
+      documentation: null
     },
     {
       id: 4,
-      title: "Financial Network Traffic Analyzer",
-      category: "network",
-      status: "Production",
-      duration: "3 months",
-      team: "Lead Developer (Team of 3)",
-      description: "Real-time network traffic analysis system specifically designed for financial institutions with advanced threat detection and compliance monitoring.",
-      detailedDescription: "This specialized network analysis system was developed for banking and financial environments, focusing on transaction security, regulatory compliance, and sophisticated threat detection. The system processes millions of financial transactions daily while maintaining strict security and compliance standards.",
+      title: "Data Analysis Project",
+      category: "academic",
+      status: "Academic Project",
+      duration: "2 months",
+      team: "Solo Project",
+      description: "Statistical analysis project using Python to analyze cybersecurity datasets and identify patterns in security incidents.",
+      detailedDescription: "This academic project focused on data analysis and visualization using Python. I worked with cybersecurity datasets to understand patterns in security incidents, learning about data processing, statistical analysis, and visualization techniques.",
       objectives: [
-        "Monitor financial transaction networks for security threats",
-        "Ensure compliance with banking regulations and standards",
-        "Detect sophisticated financial fraud attempts",
-        "Provide real-time security monitoring and alerting"
+        "Learn data analysis and visualization techniques",
+        "Apply statistical methods to cybersecurity data",
+        "Develop Python programming skills",
+        "Create meaningful insights from large datasets"
       ],
-      technologies: ["Python", "Splunk", "PostgreSQL", "Docker", "Elasticsearch", "Kibana", "Apache Kafka", "Redis"],
+      technologies: ["Python", "Pandas", "NumPy", "Matplotlib", "Seaborn", "Jupyter Notebook", "SQLite"],
       features: [
-        "Real-time financial transaction monitoring",
-        "Advanced pattern recognition for fraud detection",
-        "Compliance reporting for banking regulations",
-        "Integration with existing banking security infrastructure",
-        "Automated threat response and incident escalation",
-        "Comprehensive audit trail and forensic capabilities"
+        "Data cleaning and preprocessing",
+        "Statistical analysis and hypothesis testing",
+        "Data visualization and chart creation",
+        "Pattern recognition in security data",
+        "Report generation with findings",
+        "Interactive data exploration"
       ],
       achievements: [
-        "Processed 10M+ financial transactions daily with zero downtime",
-        "Detected and prevented 50+ fraud attempts during deployment",
-        "Achieved 100% compliance with banking security regulations",
-        "Reduced false positive alerts by 65%"
+        "Successfully analyzed large cybersecurity datasets",
+        "Created meaningful visualizations and insights",
+        "Developed strong data analysis skills",
+        "Received excellent feedback on project presentation"
       ],
       challenges: [
-        "Meeting strict financial industry security requirements",
-        "Processing high-volume transaction data in real-time",
-        "Integrating with legacy banking systems and protocols"
+        "Working with large and complex datasets",
+        "Learning statistical analysis concepts",
+        "Creating clear and meaningful visualizations"
       ],
       results: [
-        "99.9% system uptime and reliability",
-        "85% reduction in fraud-related losses",
-        "Complete regulatory compliance achievement",
-        "30% improvement in threat detection speed"
+        "Comprehensive data analysis report",
+        "Improved Python and data science skills",
+        "Understanding of cybersecurity data patterns",
+        "Academic project completed successfully"
       ],
-      github: "https://github.com/jaberfarooqi/financial-network-analyzer",
-      demo: "https://finnet-analyzer-demo.jaberfarooqi.com",
-      documentation: "/docs/financial-network-security.pdf"
+      github: "https://github.com/jbn7scripts/data-analysis-project",
+      demo: null,
+      documentation: null
     },
     {
       id: 5,
-      title: "AI-Powered Malware Detection Engine",
-      category: "ai-ml",
-      status: "Research Phase",
-      duration: "8 months",
-      team: "Research Team Lead",
-      description: "Next-generation malware detection system using advanced machine learning and behavioral analysis to identify unknown threats and zero-day attacks.",
-      detailedDescription: "This cutting-edge malware detection engine employs multiple AI techniques including deep learning, behavioral analysis, and static/dynamic analysis to identify known and unknown malware threats. The system is designed to detect sophisticated attacks that bypass traditional signature-based detection methods.",
+      title: "Basic Cryptography Implementation",
+      category: "learning",
+      status: "Learning Project",
+      duration: "1 month",
+      team: "Solo Project",
+      description: "Educational implementation of basic cryptographic algorithms including encryption, decryption, and hash functions.",
+      detailedDescription: "This project was developed to learn about cryptography fundamentals. I implemented basic cryptographic algorithms from scratch to understand how encryption, decryption, and hashing work in practice.",
       objectives: [
-        "Detect unknown malware and zero-day threats",
-        "Reduce reliance on signature-based detection methods",
-        "Implement behavioral analysis for advanced threat detection",
-        "Create scalable solution for enterprise malware protection"
+        "Learn cryptography fundamentals and algorithms",
+        "Implement basic encryption and decryption",
+        "Understand hash functions and digital signatures",
+        "Develop secure coding practices"
       ],
-      technologies: ["Python", "PyTorch", "OpenCV", "Ghidra", "IDA Pro", "YARA", "VirusTotal API", "Docker"],
+      technologies: ["Python", "Cryptography", "Hashlib", "Base64", "Math", "Random"],
       features: [
-        "Static and dynamic malware analysis capabilities",
-        "Machine learning-based threat classification",
-        "Behavioral pattern recognition and analysis",
-        "Zero-day threat detection using heuristic analysis",
-        "Integration with threat intelligence feeds",
-        "Automated malware family classification"
+        "Symmetric encryption (AES-like implementation)",
+        "Asymmetric encryption (RSA-like implementation)",
+        "Hash function implementations",
+        "Digital signature creation and verification",
+        "Key generation and management",
+        "Educational documentation and examples"
       ],
       achievements: [
-        "Achieved 97% accuracy in detecting unknown malware samples",
-        "Identified 25+ zero-day malware variants during research",
-        "Developed novel behavioral analysis algorithms",
-        "Published research findings at cybersecurity conferences"
+        "Learned cryptography fundamentals",
+        "Implemented working cryptographic algorithms",
+        "Developed understanding of security principles",
+        "Created educational materials for learning"
       ],
       challenges: [
-        "Obtaining diverse malware samples for training",
-        "Reducing false positive rates while maintaining high detection",
-        "Adapting to rapidly evolving malware techniques"
+        "Understanding complex mathematical concepts",
+        "Implementing secure cryptographic algorithms",
+        "Ensuring proper key management practices"
       ],
       results: [
-        "97% detection rate for unknown malware",
-        "5% false positive rate (industry standard: 15%)",
-        "2-second average analysis time per sample",
-        "Successfully detected 15 APT-level threats"
+        "Functional cryptography library",
+        "Improved understanding of security concepts",
+        "Educational resource for others",
+        "Practical experience with cryptography"
       ],
-      github: "https://github.com/jaberfarooqi/ai-malware-detection",
-      documentation: "/docs/ai-malware-detection-research.pdf"
+      github: "https://github.com/jbn7scripts/cryptography-learning",
+      demo: null,
+      documentation: null
     },
     {
       id: 6,
-      title: "Cybersecurity Incident Response Platform",
-      category: "network",
-      status: "Beta Testing",
-      duration: "7 months",
-      team: "Technical Lead (Team of 5)",
-      description: "Comprehensive incident response and management platform with automated workflows, threat intelligence integration, and collaborative investigation tools.",
-      detailedDescription: "This enterprise-grade incident response platform streamlines the entire cybersecurity incident lifecycle from detection to resolution. It provides automated workflows, collaboration tools, threat intelligence integration, and comprehensive reporting capabilities for security teams.",
+      title: "Simple Chat Application",
+      category: "academic",
+      status: "Academic Project",
+      duration: "3 months",
+      team: "Group Project (3 members)",
+      description: "Basic chat application with encryption features developed as part of software engineering coursework.",
+      detailedDescription: "This group project focused on software engineering principles, including requirements analysis, design, implementation, and testing. The application includes basic chat functionality with simple encryption features.",
       objectives: [
-        "Streamline cybersecurity incident response processes",
-        "Provide collaborative investigation and analysis tools",
-        "Integrate with existing security infrastructure and tools",
-        "Automate routine incident response tasks"
+        "Learn software engineering methodologies",
+        "Work effectively in a team environment",
+        "Implement secure communication features",
+        "Apply software development best practices"
       ],
-      technologies: ["React.js", "Node.js", "PostgreSQL", "Redis", "Docker", "Elasticsearch", "Python", "REST APIs"],
+      technologies: ["Java", "Swing", "Socket Programming", "SQLite", "Git", "JUnit"],
       features: [
-        "Automated incident detection and classification",
-        "Collaborative investigation workspace",
-        "Integration with SIEM and security tools",
-        "Customizable incident response playbooks",
-        "Real-time threat intelligence correlation",
-        "Comprehensive incident reporting and metrics"
+        "Real-time messaging between users",
+        "Basic user authentication system",
+        "Simple message encryption",
+        "User interface with Java Swing",
+        "Database storage for messages",
+        "Basic error handling and validation"
       ],
       achievements: [
-        "Reduced average incident response time by 55%",
-        "Improved incident resolution rate by 40%",
-        "Successfully deployed in 3 enterprise environments",
-        "Integrated with 15+ popular security tools"
+        "Successfully completed group project",
+        "Learned team collaboration and version control",
+        "Implemented working chat application",
+        "Applied software engineering principles"
       ],
       challenges: [
-        "Integrating with diverse security tool ecosystems",
-        "Designing intuitive interface for complex workflows",
-        "Ensuring platform scalability for large organizations"
+        "Coordinating work with team members",
+        "Learning Java and Swing framework",
+        "Implementing network communication features"
       ],
       results: [
-        "55% reduction in incident response time",
-        "90% user satisfaction rate from security teams",
-        "40% improvement in incident resolution efficiency",
-        "100% integration success with existing security tools"
+        "Functional chat application",
+        "Improved teamwork and collaboration skills",
+        "Understanding of software development lifecycle",
+        "Academic project completed successfully"
       ],
-      github: "https://github.com/jaberfarooqi/cybersecurity-incident-platform",
-      demo: "https://incident-response-demo.jaberfarooqi.com",
-      documentation: "/docs/incident-response-platform.pdf"
+      github: "https://github.com/jbn7scripts/chat-application",
+      demo: null,
+      documentation: null
     }
   ];
 
@@ -321,25 +324,24 @@ export default function Projects() {
       case 'Active Development': return 'bg-yellow-100 text-yellow-800';
       case 'Research Phase': return 'bg-purple-100 text-purple-800';
       case 'Beta Testing': return 'bg-orange-100 text-orange-800';
+      case 'Academic Project': return 'bg-indigo-100 text-indigo-800';
+      case 'Learning Project': return 'bg-teal-100 text-teal-800';
+      case 'Active': return 'bg-green-100 text-green-800';
       default: return 'bg-gray-100 text-gray-800';
     }
   };
 
   const getCategoryIcon = (category) => {
     switch (category) {
-      case 'ai-ml': return <Brain className="w-5 h-5" />;
-      case 'network': return <Network className="w-5 h-5" />;
-      case 'pentesting': return <Target className="w-5 h-5" />;
-      case 'blockchain': return <Database className="w-5 h-5" />;
+      case 'academic': return <BookOpen className="w-5 h-5" />;
+      case 'learning': return <Lightbulb className="w-5 h-5" />;
+      case 'personal': return <User className="w-5 h-5" />;
       default: return <Code className="w-5 h-5" />;
     }
   };
 
   return (
-    <Layout
-      title="Projects - Jaber Farooqi | Cybersecurity Portfolio"
-      description="Explore Jaber Farooqi's comprehensive cybersecurity projects including AI-powered intrusion detection, blockchain security analysis, and advanced penetration testing tools."
-    >
+    <main className="flex-1 py-20 lg:py-24">
       {/* Hero Section */}
       <section className="pt-24 pb-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-qatar-beige via-white to-qatar-beige/50">
       <div className="max-w-7xl mx-auto">
@@ -349,62 +351,87 @@ export default function Projects() {
             </h1>
             <div className="section-divider"></div>
             <p className="text-xl text-elegant max-w-4xl mx-auto leading-relaxed mb-8">
-              Comprehensive portfolio of advanced cybersecurity projects demonstrating expertise in 
-              AI-powered security, network protection, penetration testing, and innovative security solutions.
+              Collection of academic and personal projects demonstrating practical application of cybersecurity concepts, 
+              programming skills, and problem-solving abilities developed through coursework and self-directed learning.
             </p>
             
             {/* Project Statistics */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
               <div className="card-elegant p-6 text-center">
                 <div className="text-3xl font-bold heading-primary mb-2">6</div>
-                <div className="text-sm text-elegant font-medium">Major Projects</div>
+                <div className="text-sm text-elegant font-medium">Projects</div>
               </div>
               <div className="card-elegant p-6 text-center">
-                <div className="text-3xl font-bold heading-primary mb-2">99%</div>
-                <div className="text-sm text-elegant font-medium">Success Rate</div>
+                <div className="text-3xl font-bold heading-primary mb-2">3</div>
+                <div className="text-sm text-elegant font-medium">Academic</div>
               </div>
               <div className="card-elegant p-6 text-center">
-                <div className="text-3xl font-bold heading-primary mb-2">15+</div>
+                <div className="text-3xl font-bold heading-primary mb-2">8+</div>
                 <div className="text-sm text-elegant font-medium">Technologies</div>
               </div>
               <div className="card-elegant p-6 text-center">
-                <div className="text-3xl font-bold heading-primary mb-2">50+</div>
-                <div className="text-sm text-elegant font-medium">Vulnerabilities Found</div>
+                <div className="text-3xl font-bold heading-primary mb-2">100%</div>
+                <div className="text-sm text-elegant font-medium">Completion Rate</div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Category Filter */}
-      <section className="py-8 px-4 sm:px-6 lg:px-8 bg-white border-b border-gray-100 sticky top-16 z-40">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex items-center justify-center space-x-2 overflow-x-auto">
-            <Filter className="w-5 h-5 text-qatar-maroon mr-4 flex-shrink-0" />
-            {categories.map((category) => (
-              <button
-                key={category.id}
-                onClick={() => setSelectedCategory(category.id)}
-                className={`flex items-center px-4 py-2 rounded-lg font-medium transition-all duration-300 whitespace-nowrap ${
-                  selectedCategory === category.id
-                    ? 'bg-qatar-navy text-white shadow-elegant'
-                    : 'text-qatar-navy hover:bg-qatar-beige border border-gray-200'
-                }`}
-              >
-                <span className="mr-2">{getCategoryIcon(category.id)}</span>
-                {category.label}
-                <span className={`ml-2 px-2 py-0.5 rounded-full text-xs ${
-                  selectedCategory === category.id
-                    ? 'bg-white/20 text-white'
-                    : 'bg-qatar-beige text-qatar-navy'
-                }`}>
-                  {category.count}
-                </span>
-              </button>
-            ))}
-          </div>
+      {/* Filter Buttons */}
+      <div className="flex flex-wrap gap-4 mb-12 justify-center">
+        <button
+          onClick={() => setSelectedCategory('all')}
+          className={`flex items-center px-6 py-3 rounded-lg font-medium transition-all duration-300 ${
+            selectedCategory === 'all'
+              ? 'bg-white text-qatar-maroon border-2 border-qatar-maroon shadow-elegant'
+              : 'bg-white text-qatar-navy hover:text-qatar-maroon hover:border-2 hover:border-qatar-maroon'
+          }`}
+        >
+          <Code size={18} className="mr-2" />
+          All Projects
+          <span className="ml-2 text-sm opacity-75">{categories.find(c => c.id === 'all').count}</span>
+        </button>
+
+        <button
+          onClick={() => setSelectedCategory('academic')}
+          className={`flex items-center px-6 py-3 rounded-lg font-medium transition-all duration-300 ${
+            selectedCategory === 'academic'
+              ? 'bg-white text-qatar-maroon border-2 border-qatar-maroon shadow-elegant'
+              : 'bg-white text-qatar-navy hover:text-qatar-maroon hover:border-2 hover:border-qatar-maroon'
+          }`}
+        >
+          <BookOpen size={18} className="mr-2" />
+          Academic Projects
+          <span className="ml-2 text-sm opacity-75">{categories.find(c => c.id === 'academic').count}</span>
+        </button>
+
+        <button
+          onClick={() => setSelectedCategory('learning')}
+          className={`flex items-center px-6 py-3 rounded-lg font-medium transition-all duration-300 ${
+            selectedCategory === 'learning'
+              ? 'bg-white text-qatar-maroon border-2 border-qatar-maroon shadow-elegant'
+              : 'bg-white text-qatar-navy hover:text-qatar-maroon hover:border-2 hover:border-qatar-maroon'
+          }`}
+        >
+          <Lightbulb size={18} className="mr-2" />
+          Learning Projects
+          <span className="ml-2 text-sm opacity-75">{categories.find(c => c.id === 'learning').count}</span>
+        </button>
+
+        <button
+          onClick={() => setSelectedCategory('personal')}
+          className={`flex items-center px-6 py-3 rounded-lg font-medium transition-all duration-300 ${
+            selectedCategory === 'personal'
+              ? 'bg-white text-qatar-maroon border-2 border-qatar-maroon shadow-elegant'
+              : 'bg-white text-qatar-navy hover:text-qatar-maroon hover:border-2 hover:border-qatar-maroon'
+          }`}
+        >
+          <User size={18} className="mr-2" />
+          Personal Projects
+          <span className="ml-2 text-sm opacity-75">{categories.find(c => c.id === 'personal').count}</span>
+        </button>
         </div>
-      </section>
 
         {/* Projects Grid */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-white to-qatar-beige/30">
@@ -686,6 +713,6 @@ export default function Projects() {
           </div>
         </div>
       )}
-    </Layout>
+    </main>
   );
 }

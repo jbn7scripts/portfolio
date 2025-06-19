@@ -44,7 +44,7 @@ const AdvancedLayout = ({
   const socialLinks = [
     {
       name: 'GitHub',
-      href: 'https://github.com/jaberfarooqi',
+      href: 'https://github.com/jbn7scripts',
       icon: <Github size={20} />,
       description: 'View my code repositories'
     },
@@ -336,13 +336,13 @@ const AdvancedLayout = ({
                     linkedin.com/in/jaberfarooqi
                   </a>
                   <a
-                    href="https://github.com/jaberfarooqi"
+                    href="https://github.com/jbn7scripts"
+                    className="flex items-center text-sm text-charcoal hover:text-qatar-maroon transition-colors"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center text-sm text-charcoal hover:text-qatar-maroon transition-colors"
                   >
                     <Github size={16} className="mr-2" />
-                    github.com/jaberfarooqi
+                    github.com/jbn7scripts
                   </a>
                 </div>
               </div>

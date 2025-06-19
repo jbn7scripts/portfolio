@@ -282,10 +282,10 @@ const SkillsVisualization = ({ showDetailed = false }) => {
               <button
                 key={key}
                 onClick={() => setActiveCategory(key)}
-                className={`flex items-center px-6 py-3 rounded-xl font-medium transition-all duration-300 ${
+                className={`flex items-center px-6 py-3 rounded-lg font-medium transition-all duration-300 ${
                   activeCategory === key
-                    ? `bg-gradient-to-r ${category.color} text-white shadow-elegant-lg focus:outline-none active:bg-gradient-to-r active:text-white`
-                    : 'bg-white text-qatar-navy hover:bg-qatar-beige border border-qatar-maroon focus:outline-none active:bg-qatar-beige active:text-qatar-navy'
+                    ? 'bg-white text-qatar-maroon border-2 border-qatar-maroon shadow-elegant'
+                    : 'bg-white text-qatar-navy hover:text-qatar-maroon hover:border-2 hover:border-qatar-maroon'
                 }`}
               >
                 <span className="mr-2">{category.icon}</span>
@@ -478,34 +478,6 @@ const SkillsVisualization = ({ showDetailed = false }) => {
               <div className="text-4xl font-bold heading-primary mb-2">15+</div>
               <div className="text-sm text-elegant font-medium mb-2">Certifications</div>
               <div className="text-xs text-qatar-gray">Completed and in progress</div>
-            </div>
-          </div>
-
-          {/* Call to Action */}
-          <div className="text-center">
-            <div className="card-elegant p-8 bg-gradient-to-r from-qatar-navy to-qatar-maroon text-white">
-              <h3 className="text-2xl font-serif font-bold mb-4">
-                Ready to Put These Skills to Work?
-              </h3>
-              <p className="text-lg mb-6 opacity-90">
-                Let's discuss how my technical expertise can help solve your cybersecurity challenges 
-                and strengthen your digital infrastructure.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a
-                  href="/contact"
-                  className="bg-white text-qatar-navy px-6 py-3 rounded-lg font-semibold hover:bg-qatar-beige transition-all duration-300 inline-flex items-center justify-center"
-                >
-                  Start a Project
-                  <ArrowRight className="ml-2 w-4 h-4" />
-                </a>
-                <a
-                  href="/resume"
-                  className="border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-qatar-navy transition-all duration-300 inline-flex items-center justify-center"
-                >
-                  View Full Resume
-                </a>
-              </div>
             </div>
           </div>
         </div>

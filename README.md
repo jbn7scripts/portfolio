@@ -52,7 +52,7 @@ A modern, cyberpunk/cybersecurity-themed portfolio built with **Next.js 14**, **
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/jaberfarooqi/jbn-portfolio.git
+   git clone https://github.com/jbn7scripts/jbn-portfolio.git
    cd jbn-portfolio
    ```
 
@@ -194,6 +194,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 Jaber Ali Farooqi
 - Email: Jaberfarooqi@hotmail.com
 - LinkedIn: [jaberfarooqi](https://linkedin.com/in/jaberfarooqi)
-- GitHub: [jaberfarooqi](https://github.com/jaberfarooqi)
+- GitHub: [jbn7scripts](https://github.com/jbn7scripts)
 
 ---

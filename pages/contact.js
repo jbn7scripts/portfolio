@@ -1,4 +1,3 @@
-import Layout from '../components/Layout';
 import { useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { 
@@ -179,10 +178,7 @@ export default function Contact() {
   const isWorkingHours = currentHour >= 9 && currentHour < 18;
 
   return (
-    <Layout
-      title="Contact - Jaber Farooqi | Cybersecurity Professional"
-      description="Get in touch with Jaber Farooqi for cybersecurity consulting, penetration testing, security assessments, and professional collaboration opportunities."
-    >
+    <main className="flex-1 py-20 lg:py-24">
       {/* Hero Section */}
       <section className="pt-24 pb-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-qatar-beige via-white to-qatar-beige/50">
         <div className="max-w-7xl mx-auto">
@@ -557,6 +553,6 @@ export default function Contact() {
       </div>
     </div>
       </section>
-    </Layout>
+    </main>
   );
 }

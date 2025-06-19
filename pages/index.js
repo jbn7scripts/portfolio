@@ -35,133 +35,136 @@ import {
   Activity,
   Briefcase,
   FileText,
-  MessageCircle
+  MessageCircle,
+  GraduationCap,
+  BookOpen,
+  Lightbulb
 } from 'lucide-react';
 
 export default function Home() {
   const [currentTitle, setCurrentTitle] = useState(0);
   const [isTyping, setIsTyping] = useState(true);
   const [showCursor, setShowCursor] = useState(true);
-  
+
   const { ref: heroRef, inView: heroInView } = useInView({ threshold: 0.1 });
   const { ref: statsRef, inView: statsInView } = useInView({ threshold: 0.1 });
-  const { ref: servicesRef, inView: servicesInView } = useInView({ threshold: 0.1 });
+  const { ref: educationRef, inView: educationInView } = useInView({ threshold: 0.1 });
   const { ref: projectsRef, inView: projectsInView } = useInView({ threshold: 0.1 });
   const { ref: experienceRef, inView: experienceInView } = useInView({ threshold: 0.1 });
 
   const titles = [
-    "Cybersecurity Professional",
-    "Penetration Testing Specialist", 
-    "Network Security Expert",
-    "AI Security Researcher",
-    "Incident Response Analyst"
+    "Computer Science Graduate",
+    "Cybersecurity Enthusiast", 
+    "Technology Professional",
+    "Security Researcher",
+    "Software Developer"
   ];
 
   const stats = [
     { 
-      value: "99.2%", 
-      label: "Threat Detection Accuracy", 
-      icon: <Target className="w-6 h-6" />,
-      description: "AI-powered intrusion detection success rate"
+      value: "BSc", 
+      label: "Computer Science Degree", 
+      icon: <GraduationCap className="w-6 h-6" />,
+      description: "University of Westminster, London"
     },
     { 
-      value: "200+", 
-      label: "Vulnerabilities Identified", 
-      icon: <Shield className="w-6 h-6" />,
-      description: "Critical security flaws discovered and patched"
+      value: "15+", 
+      label: "Academic Projects", 
+      icon: <BookOpen className="w-6 h-6" />,
+      description: "Cybersecurity and software development"
     },
     { 
-      value: "50+", 
-      label: "Security Assessments", 
+      value: "8+", 
+      label: "Technical Skills", 
       icon: <CheckCircle className="w-6 h-6" />,
-      description: "Comprehensive penetration tests completed"
+      description: "Programming languages and security tools"
     },
     { 
-      value: "4+", 
-      label: "Years Experience", 
+      value: "2+", 
+      label: "Internships", 
       icon: <Award className="w-6 h-6" />,
-      description: "Professional cybersecurity expertise"
+      description: "PwC and Sidra Holding experience"
     },
   ];
 
-  const services = [
+  const education = [
     {
-      title: "Penetration Testing",
-      description: "Comprehensive security assessments to identify vulnerabilities before attackers do",
-      icon: <Target className="w-8 h-8" />,
-      features: ["Network penetration testing", "Web application security", "Social engineering assessment", "Wireless security testing"],
-      tools: ["Metasploit", "Burp Suite", "Nmap", "Kali Linux"],
-      deliverables: "Detailed vulnerability report with remediation strategies"
+      title: "Computer Science Foundation",
+      description: "Strong theoretical and practical foundation in computer science principles",
+      icon: <BookOpen className="w-8 h-8" />,
+      features: ["Data structures & algorithms", "Software engineering", "Database systems", "Computer networks"],
+      tools: ["Java", "Python", "SQL", "Git"],
+      deliverables: "Solid programming and problem-solving skills"
     },
     {
-      title: "Network Security",
-      description: "Advanced network protection and monitoring solutions for enterprise environments",
+      title: "Cybersecurity Knowledge",
+      description: "Academic and self-directed learning in cybersecurity fundamentals",
       icon: <Shield className="w-8 h-8" />,
-      features: ["Firewall configuration", "IDS/IPS deployment", "Network monitoring", "Traffic analysis"],
-      tools: ["Wireshark", "Snort", "pfSense", "Cisco ASA"],
-      deliverables: "Secure network architecture with 24/7 monitoring"
+      features: ["Network security", "Cryptography", "Ethical hacking", "Security protocols"],
+      tools: ["Wireshark", "Kali Linux", "Metasploit", "Nmap"],
+      deliverables: "Understanding of security principles and tools"
     },
     {
-      title: "AI-Powered Security",
-      description: "Next-generation threat detection using machine learning and behavioral analysis",
+      title: "Web Development",
+      description: "Full-stack development skills for modern web applications",
+      icon: <Code className="w-8 h-8" />,
+      features: ["Frontend development", "Backend systems", "API design", "Database integration"],
+      tools: ["React", "Node.js", "JavaScript", "MongoDB"],
+      deliverables: "Functional web applications and services"
+    },
+    {
+      title: "Data Analysis",
+      description: "Skills in data processing, analysis, and visualization",
       icon: <Brain className="w-8 h-8" />,
-      features: ["Anomaly detection", "Behavioral analysis", "Predictive threat modeling", "Automated response"],
-      tools: ["TensorFlow", "PyTorch", "Scikit-learn", "Python"],
-      deliverables: "Intelligent security system with 95%+ accuracy"
+      features: ["Statistical analysis", "Data visualization", "Machine learning basics", "Python libraries"],
+      tools: ["Python", "Pandas", "Matplotlib", "Scikit-learn"],
+      deliverables: "Data-driven insights and reports"
     },
     {
-      title: "Incident Response",
-      description: "Rapid threat containment and forensic analysis for security breaches",
-      icon: <Activity className="w-8 h-8" />,
-      features: ["Threat hunting", "Digital forensics", "Malware analysis", "Recovery planning"],
-      tools: ["Splunk", "Volatility", "Autopsy", "YARA"],
-      deliverables: "Complete incident analysis and recovery roadmap"
-    },
-    {
-      title: "Security Consulting",
-      description: "Strategic cybersecurity guidance for digital transformation and compliance",
+      title: "Professional Skills",
+      description: "Soft skills and professional development for workplace success",
       icon: <Users className="w-8 h-8" />,
-      features: ["Risk assessment", "Compliance auditing", "Security architecture", "Policy development"],
-      tools: ["NIST Framework", "ISO 27001", "GDPR", "Risk assessment tools"],
-      deliverables: "Comprehensive security strategy and implementation plan"  
+      features: ["Team collaboration", "Problem solving", "Communication", "Project management"],
+      tools: ["Agile methodologies", "Documentation", "Presentation skills", "Time management"],
+      deliverables: "Professional readiness and adaptability"
     },
     {
-      title: "Blockchain Security",
-      description: "Specialized security analysis for blockchain applications and smart contracts",
-      icon: <Database className="w-8 h-8" />,
-      features: ["Smart contract auditing", "DeFi security", "Blockchain analysis", "Crypto security"],
-      tools: ["Slither", "MythX", "Brownie", "Web3.py"],
-      deliverables: "Detailed blockchain security assessment report"
+      title: "Continuous Learning",
+      description: "Commitment to staying current with technology trends and best practices",
+      icon: <Lightbulb className="w-8 h-8" />,
+      features: ["Online courses", "Certification preparation", "Industry research", "Open source contribution"],
+      tools: ["Coursera", "Udemy", "GitHub", "Security blogs"],
+      deliverables: "Up-to-date knowledge and skills"
     }
   ];
 
   const featuredProjects = [
     {
-      title: "Neural Network Intrusion Detection System",
-      description: "AI-powered system achieving 99.2% accuracy in real-time threat detection",
-      image: "/projects/neural-ids.jpg",
-      technologies: ["Python", "TensorFlow", "Wireshark", "Docker"],
-      status: "Production",
-      impact: "Reduced false positives by 75%",
-      link: "/projects#neural-ids"
+      title: "Network Security Monitoring Tool",
+      description: "Academic project developing a basic network traffic analyzer",
+      image: "/projects/network-monitor.jpg",
+      technologies: ["Python", "Wireshark", "SQLite", "Tkinter"],
+      status: "Academic",
+      impact: "Learned network protocols and security monitoring",
+      link: "/projects#network-monitor"
     },
     {
-      title: "Blockchain Security Framework",
-      description: "Comprehensive tool for smart contract vulnerability assessment",
-      image: "/projects/blockchain-security.jpg", 
-      technologies: ["Python", "Solidity", "Web3.py", "Ethereum"],
+      title: "Web Application Security Scanner",
+      description: "Educational tool for identifying common web vulnerabilities",
+      image: "/projects/web-scanner.jpg", 
+      technologies: ["Python", "Flask", "SQLite", "HTML/CSS"],
+      status: "Learning Project",
+      impact: "Gained understanding of web security principles",
+      link: "/projects#web-scanner"
+    },
+    {
+      title: "Portfolio Website",
+      description: "Personal portfolio showcasing skills and projects",
+      image: "/projects/portfolio.jpg",
+      technologies: ["Next.js", "React", "Tailwind CSS", "JavaScript"],
       status: "Active",
-      impact: "Prevented $2M+ in potential losses",
-      link: "/projects#blockchain-security"
-    },
-    {
-      title: "Enterprise Penetration Testing Suite",
-      description: "Advanced toolkit streamlining security assessment workflows",
-      image: "/projects/pentest-suite.jpg",
-      technologies: ["Python", "Metasploit", "Nmap", "Custom Scripts"],
-      status: "Completed",
-      impact: "40% reduction in testing time",
-      link: "/projects#pentest-suite"
+      impact: "Demonstrated full-stack development skills",
+      link: "/projects#portfolio"
     }
   ];
 
@@ -171,11 +174,11 @@ export default function Home() {
       company: "University of Westminster",
       period: "Jan 2025 - Present",
       location: "London, UK",
-      type: "Full-time",
+      type: "Part-time",
       highlights: [
-        "Deployed next-generation firewall solutions across campus network",
-        "Implemented zero-trust architecture reducing breach vectors by 75%",
-        "Led cybersecurity training for 500+ staff and students"
+        "Providing technical support to students and staff",
+        "Maintaining computer lab equipment and software",
+        "Assisting with basic network troubleshooting"
       ]
     },
     {
@@ -185,9 +188,9 @@ export default function Home() {
       location: "Doha, Qatar", 
       type: "Internship",
       highlights: [
-        "Coordinated with Google and Microsoft on digital transformation",
-        "Conducted cybersecurity assessments for critical infrastructure",
-        "Presented findings to C-suite executives and government officials"
+        "Assisted with digital transformation projects",
+        "Learned about enterprise technology solutions",
+        "Gained exposure to consulting methodologies"
       ]
     },
     {
@@ -197,16 +200,16 @@ export default function Home() {
       location: "Doha, Qatar",
       type: "Internship",
       highlights: [
-        "Monitored network traffic for 200+ endpoints using SIEM",
-        "Identified and mitigated 15+ potential security threats",
-        "Developed automated scripts reducing response time by 60%"
+        "Monitored network traffic using SIEM tools",
+        "Assisted with basic security assessments",
+        "Learned about enterprise security practices"
       ]
     }
   ];
 
   const quickLinks = [
     { name: "View Projects", href: "/projects", icon: <Briefcase className="w-5 h-5" /> },
-    { name: "Download Resume", href: "/resume.pdf", icon: <FileText className="w-5 h-5" /> },
+    { name: "Download Resume", href: "/JaberAliFarooqi_CV.pdf", icon: <FileText className="w-5 h-5" /> },
     { name: "Get In Touch", href: "/contact", icon: <MessageCircle className="w-5 h-5" /> },
     { name: "About Me", href: "/about", icon: <Users className="w-5 h-5" /> }
   ];
@@ -214,13 +217,13 @@ export default function Home() {
   // Track if sections have ever been in view
   const [heroHasBeenInView, setHeroHasBeenInView] = useState(false);
   const [statsHasBeenInView, setStatsHasBeenInView] = useState(false);
-  const [servicesHasBeenInView, setServicesHasBeenInView] = useState(false);
+  const [educationHasBeenInView, setEducationHasBeenInView] = useState(false);
   const [projectsHasBeenInView, setProjectsHasBeenInView] = useState(false);
   const [experienceHasBeenInView, setExperienceHasBeenInView] = useState(false);
 
   useEffect(() => { if (heroInView) setHeroHasBeenInView(true); }, [heroInView]);
   useEffect(() => { if (statsInView) setStatsHasBeenInView(true); }, [statsInView]);
-  useEffect(() => { if (servicesInView) setServicesHasBeenInView(true); }, [servicesInView]);
+  useEffect(() => { if (educationInView) setEducationHasBeenInView(true); }, [educationInView]);
   useEffect(() => { if (projectsInView) setProjectsHasBeenInView(true); }, [projectsInView]);
   useEffect(() => { if (experienceInView) setExperienceHasBeenInView(true); }, [experienceInView]);
 
@@ -249,7 +252,7 @@ export default function Home() {
           <div className="absolute inset-0" style={{
             backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
           }}></div>
-        </div>
+                </div>
 
         <div ref={heroRef} className={`text-center max-w-6xl mx-auto relative z-10 ${heroHasBeenInView ? 'animate-fade-in' : 'opacity-0'}`}>
           {/* Main Heading */}
@@ -266,10 +269,9 @@ export default function Home() {
             </div>
             
             <p className="text-xl sm:text-2xl text-elegant max-w-4xl mx-auto mb-12 leading-relaxed">
-              Passionate cybersecurity professional with expertise in penetration testing, 
-              AI-powered threat detection, and enterprise security architecture. 
+              Recent Computer Science graduate with a passion for cybersecurity and technology. 
               <span className="block mt-4 text-lg text-qatar-gray">
-                Based in London • Available globally • Committed to digital security excellence
+                Based in London • Seeking opportunities • Eager to learn and grow
               </span>
             </p>
           </div>
@@ -285,7 +287,7 @@ export default function Home() {
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
             <a
-              href="/Jaber-Farooqi-Resume.pdf"
+              href="/JaberAliFarooqi_CV.pdf"
               className="btn-secondary inline-flex items-center text-lg px-8 py-4 group"
               target="_blank"
               rel="noopener noreferrer"
@@ -294,7 +296,7 @@ export default function Home() {
               Download Resume
             </a>
           </div>
-
+          
           {/* Quick Links */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto mb-16">
             {quickLinks.map((link, index) => (
@@ -342,56 +344,56 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Services Section */}
+      {/* Education Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-7xl mx-auto">
-          <div ref={servicesRef} className={`text-center mb-16 ${servicesHasBeenInView ? 'animate-fade-in' : 'opacity-0'}`}>
+          <div ref={educationRef} className={`text-center mb-16 ${educationHasBeenInView ? 'animate-fade-in' : 'opacity-0'}`}>
             <h2 className="text-4xl sm:text-5xl font-serif font-bold heading-primary mb-4">
-              Cybersecurity Services
+              Education
             </h2>
             <div className="section-divider"></div>
             <p className="text-lg text-elegant max-w-3xl mx-auto">
-              Comprehensive cybersecurity solutions tailored to protect your digital infrastructure 
-              and enable secure digital transformation.
+              Strong academic foundation in computer science with specialized knowledge in cybersecurity, 
+              web development, and data analysis. Committed to continuous learning and professional growth.
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, index) => (
+            {education.map((edu, index) => (
               <div
-                key={service.title}
+                key={edu.title}
                 className={`card-elegant p-8 hover:shadow-elegant-xl transition-all duration-300 group ${
-                  servicesHasBeenInView ? 'animate-slide-up' : 'opacity-0'
+                  educationHasBeenInView ? 'animate-slide-up' : 'opacity-0'
                 }`}
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="text-qatar-maroon mb-6 flex justify-center group-hover:scale-110 transition-transform">
-                  {service.icon}
-                </div>
+                  {edu.icon}
+                  </div>
                 <h3 className="text-xl font-serif font-bold heading-secondary mb-4 text-center">
-                  {service.title}
-                </h3>
+                  {edu.title}
+                  </h3>
                 <p className="text-elegant mb-6 leading-relaxed text-center">
-                  {service.description}
+                  {edu.description}
                 </p>
                 
                 <div className="space-y-4">
                   <div>
                     <h4 className="font-semibold text-qatar-navy text-sm mb-2">Key Features:</h4>
                     <ul className="text-sm text-elegant space-y-1">
-                      {service.features.map((feature, idx) => (
+                      {edu.features.map((feature, idx) => (
                         <li key={idx} className="flex items-center">
                           <CheckCircle className="w-4 h-4 text-green-600 mr-2 flex-shrink-0" />
                           {feature}
-                        </li>
-                      ))}
-                    </ul>
+                      </li>
+                    ))}
+                  </ul>
                   </div>
                   
                   <div>
                     <h4 className="font-semibold text-qatar-navy text-sm mb-2">Tools Used:</h4>
                     <div className="flex flex-wrap gap-1">
-                      {service.tools.map((tool, idx) => (
+                      {edu.tools.map((tool, idx) => (
                         <span
                           key={idx}
                           className="px-2 py-1 bg-qatar-beige text-qatar-navy rounded text-xs font-medium"
@@ -404,7 +406,7 @@ export default function Home() {
                   
                   <div className="pt-4 border-t border-gray-100">
                     <div className="text-xs text-qatar-gray">
-                      <strong>Deliverable:</strong> {service.deliverables}
+                      <strong>Deliverable:</strong> {edu.deliverables}
                     </div>
                   </div>
                 </div>
@@ -426,8 +428,8 @@ export default function Home() {
             </h2>
             <div className="section-divider"></div>
             <p className="text-lg text-elegant max-w-3xl mx-auto">
-              Showcasing innovative cybersecurity solutions that demonstrate practical application 
-              of advanced security expertise and cutting-edge technologies.
+              Academic and personal projects demonstrating practical application of cybersecurity concepts, 
+              programming skills, and problem-solving abilities developed through coursework and self-directed learning.
             </p>
           </div>
           
@@ -472,7 +474,7 @@ export default function Home() {
                           className="px-2 py-1 bg-qatar-beige text-qatar-navy rounded text-xs font-medium"
                         >
                           {tech}
-                        </span>
+                    </span>
                       ))}
                     </div>
                   </div>
@@ -515,8 +517,8 @@ export default function Home() {
             </h2>
             <div className="section-divider"></div>
             <p className="text-lg text-elegant max-w-3xl mx-auto">
-              Proven track record of success in cybersecurity roles at prestigious organizations 
-              including PwC, University of Westminster, and leading financial institutions.
+              Valuable internship experience at prestigious organizations including PwC and Sidra Holding, 
+              providing exposure to enterprise technology and cybersecurity practices.
             </p>
           </div>
           
@@ -575,7 +577,7 @@ export default function Home() {
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
-        </div>
+            </div>
       </section>
 
       {/* Testimonials */}
@@ -590,15 +592,14 @@ export default function Home() {
           <div className="absolute inset-0" style={{
             backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
           }}></div>
-        </div>
+              </div>
         <div className="max-w-6xl mx-auto text-center relative z-10">
           <h2 className="text-4xl sm:text-5xl font-serif font-bold mb-6" style={{textShadow: '0 2px 8px rgba(0,0,0,0.25)'}}>
-            Ready to Secure Your Digital Future?
+            Ready to Start My Professional Journey?
           </h2>
           <p className="text-xl mb-12 leading-relaxed opacity-90 max-w-4xl mx-auto" style={{textShadow: '0 1px 4px rgba(0,0,0,0.18)'}}>
-            Don't wait until it's too late. Proactive cybersecurity is the key to protecting your 
-            organization's most valuable assets. Let's discuss how my expertise can help strengthen 
-            your security posture and enable secure digital transformation.
+            I'm excited to bring my academic knowledge, technical skills, and passion for cybersecurity 
+            to your organization. Let's discuss how I can contribute to your team and grow together.
           </p>
           
           {/* Contact Options */}
@@ -632,7 +633,7 @@ export default function Home() {
               <div className="text-sm opacity-80">Secure messaging</div>
               <div className="text-xs opacity-60 mt-2">Priority-based response</div>
             </Link>
-          </div>
+            </div>
           
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <Link
@@ -640,7 +641,7 @@ export default function Home() {
               className="bg-qatar-maroon text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-qatar-navy transition-all duration-300 inline-flex items-center justify-center group"
             >
               <MessageCircle className="mr-2 w-5 h-5 group-hover:scale-110 transition-transform" />
-              Start a Conversation
+              Get In Touch
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
             <Link

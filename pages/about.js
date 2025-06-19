@@ -1,4 +1,3 @@
-import Layout from '../components/Layout';
 import { useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { 
@@ -39,27 +38,27 @@ export default function About() {
   const coreValues = [
     {
       title: "Continuous Learning",
-      description: "In cybersecurity, staying current isn't optional—it's essential. I dedicate time daily to learning new attack vectors, defense strategies, and emerging technologies.",
+      description: "I believe in lifelong learning, especially in the fast-evolving field of technology. I'm always seeking to expand my knowledge and stay current with industry trends.",
       icon: <Brain className="w-8 h-8" />,
-      examples: ["Daily threat intelligence research", "Advanced certification pursuits", "Zero-day vulnerability analysis"]
+      examples: ["Academic coursework in computer science", "Online courses and certifications", "Self-directed learning projects"]
     },
     {
       title: "Ethical Responsibility", 
-      description: "With great power comes great responsibility. I believe in using security knowledge to protect and defend, never to harm or exploit.",
+      description: "I understand the importance of using technology responsibly and ethically. I'm committed to contributing positively to the digital world.",
       icon: <Shield className="w-8 h-8" />,
-      examples: ["Responsible disclosure practices", "Mentoring junior professionals", "Community security education"]
+      examples: ["Academic integrity in all projects", "Responsible disclosure practices", "Community knowledge sharing"]
     },
     {
-      title: "Innovation & Excellence",
-      description: "The best security solutions come from creative thinking and meticulous execution. I approach every challenge with fresh perspectives.",
+      title: "Innovation & Creativity",
+      description: "I approach problems with fresh perspectives and creative solutions. I enjoy finding new ways to solve complex challenges.",
       icon: <Lightbulb className="w-8 h-8" />,
-      examples: ["AI-powered detection systems", "Novel testing methodologies", "Automated security frameworks"]
+      examples: ["Creative project implementations", "Novel approaches to coursework", "Innovative problem-solving methods"]
     },
     {
-      title: "Collaborative Leadership",
-      description: "Security is a team effort. The strongest defenses are built through collaboration, knowledge sharing, and collective expertise.",
+      title: "Collaboration & Teamwork",
+      description: "I thrive in collaborative environments and believe the best solutions come from working together with diverse perspectives.",
       icon: <Users className="w-8 h-8" />,
-      examples: ["Cross-functional integration", "Open-source contributions", "Industry knowledge sharing"]
+      examples: ["Group project leadership", "Peer mentoring and support", "Cross-functional collaboration"]
     }
   ];
 
@@ -98,22 +97,22 @@ export default function About() {
 
   const lifeGoals = [
     {
-      title: "Professional Excellence",
-      description: "Become a recognized leader in cybersecurity innovation",
-      timeline: "Next 5 years",
-      milestones: ["Lead security architect role", "Speaking at major conferences", "Published security research"]
+      title: "Career Development",
+      description: "Build a successful career in cybersecurity, starting with entry-level positions and growing into leadership roles",
+      timeline: "Next 3-5 years",
+      milestones: ["Secure first cybersecurity role", "Obtain industry certifications", "Develop specialized expertise"]
     },
     {
-      title: "Global Impact",
-      description: "Contribute to making the digital world safer for everyone",
-      timeline: "Long-term",
-      milestones: ["Open-source security tools", "Mentorship programs", "Industry standard contributions"]
-    },
-    {
-      title: "Personal Growth",
-      description: "Continuous learning and balanced lifestyle",
+      title: "Skill Enhancement",
+      description: "Continuously improve technical and soft skills through learning and practical experience",
       timeline: "Ongoing",
-      milestones: ["Advanced certifications", "Cultural experiences", "Creative pursuits"]
+      milestones: ["Advanced programming skills", "Security tool proficiency", "Professional communication"]
+    },
+    {
+      title: "Community Contribution",
+      description: "Give back to the cybersecurity community through knowledge sharing and mentorship",
+      timeline: "Long-term",
+      milestones: ["Open-source contributions", "Blog writing", "Mentoring junior professionals"]
     }
   ];
 
@@ -129,10 +128,7 @@ export default function About() {
   ];
 
   return (
-    <Layout 
-      title="About - Jaber Farooqi | Cybersecurity Professional"
-      description="Learn about Jaber Farooqi's journey from Qatar to London, his passion for cybersecurity, and the values that drive his professional excellence."
-    >
+    <main className="flex-1 py-20 lg:py-24">
         {/* Hero Section */}
       <section className="pt-24 pb-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-qatar-beige via-white to-qatar-beige/50">
         <div className="max-w-7xl mx-auto">
@@ -159,29 +155,28 @@ export default function About() {
           </div>
                 <div className="flex-1 text-left">
                   <h2 className="text-2xl font-serif font-bold heading-primary mb-4">
-                    Cybersecurity Professional & Technology Enthusiast
+                    Computer Science Graduate & Technology Enthusiast
           </h2>
                   <p className="text-elegant leading-relaxed mb-6">
-                    Passionate about securing digital infrastructure through innovative solutions, 
-                    continuous learning, and collaborative excellence. Currently pursuing BSc Computer Science 
-                    at University of Westminster while gaining hands-on experience in enterprise security.
+                    Recent graduate with a passion for cybersecurity and technology. Currently pursuing BSc Computer Science 
+                    at University of Westminster while gaining valuable internship experience in enterprise technology.
                   </p>
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
                     <div>
-                      <div className="text-2xl font-bold heading-primary">4+</div>
-                      <div className="text-sm text-elegant">Years Experience</div>
-                </div>
-                    <div>
-                      <div className="text-2xl font-bold heading-primary">50+</div>
-                      <div className="text-sm text-elegant">Projects Secured</div>
+                      <div className="text-2xl font-bold heading-primary">BSc</div>
+                      <div className="text-sm text-elegant">Computer Science</div>
                 </div>
                     <div>
                       <div className="text-2xl font-bold heading-primary">15+</div>
-                      <div className="text-sm text-elegant">Certifications</div>
+                      <div className="text-sm text-elegant">Academic Projects</div>
+                </div>
+                    <div>
+                      <div className="text-2xl font-bold heading-primary">2+</div>
+                      <div className="text-sm text-elegant">Internships</div>
               </div>
               <div>
-                      <div className="text-2xl font-bold heading-primary">99%</div>
-                      <div className="text-sm text-elegant">Success Rate</div>
+                      <div className="text-2xl font-bold heading-primary">8+</div>
+                      <div className="text-sm text-elegant">Technical Skills</div>
                     </div>
                   </div>
                 </div>
@@ -191,27 +186,23 @@ export default function About() {
         </div>
       </section>
 
-      {/* Tab Navigation */}
-      <section className="py-4 px-4 sm:px-6 lg:px-8 bg-white border-b border-gray-100 sticky top-16 z-40">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex justify-center space-x-1 overflow-x-auto">
-            {tabs.map((tab) => (
-              <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                className={`flex items-center px-6 py-3 rounded-lg font-medium transition-all duration-300 whitespace-nowrap ${
-                  activeTab === tab.id
-                    ? 'bg-qatar-navy text-white shadow-elegant'
-                    : 'text-qatar-navy hover:bg-qatar-beige'
-                }`}
-              >
-                <span className="mr-2">{tab.icon}</span>
-                {tab.label}
-              </button>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Navigation Tabs */}
+      <div className="flex flex-wrap justify-center gap-4 mb-12">
+        {tabs.map((tab) => (
+          <button
+            key={tab.id}
+            onClick={() => setActiveTab(tab.id)}
+            className={`flex items-center px-6 py-3 rounded-lg font-medium transition-all duration-300 ${
+              activeTab === tab.id
+                ? 'bg-white text-qatar-maroon border-2 border-qatar-maroon shadow-elegant'
+                : 'bg-white text-qatar-navy hover:text-qatar-maroon hover:border-2 hover:border-qatar-maroon'
+            }`}
+          >
+            <span className="mr-2">{tab.icon}</span>
+            {tab.label}
+          </button>
+        ))}
+      </div>
 
       {/* Content Sections */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-white to-qatar-beige/30">
@@ -392,8 +383,8 @@ export default function About() {
                       </div>
                     </div>
                   ))}
-                </div>
-                
+        </div>
+
                 {/* Fun Facts Section */}
                 <div className="card-elegant p-8">
                   <h3 className="text-2xl font-serif font-bold heading-secondary mb-6 text-center">
@@ -421,8 +412,8 @@ export default function About() {
                   <p className="text-lg text-elegant max-w-3xl mx-auto">
                     My roadmap for contributing to the cybersecurity field and making a lasting impact on digital security.
                   </p>
-                </div>
-                
+          </div>
+
                 <div className="space-y-8">
                   {lifeGoals.map((goal, index) => (
                     <div key={goal.title} className="card-elegant p-8">
@@ -490,6 +481,6 @@ export default function About() {
       </div>
     </div>
       </section>
-    </Layout>
+    </main>
   );
 }

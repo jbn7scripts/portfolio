@@ -1,4 +1,3 @@
-import Layout from '../components/Layout';
 import { useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { 
@@ -39,19 +38,19 @@ export default function Resume() {
 
   const experience = [
     {
-      title: "IT Technician",
+      title: "Student IT Assistant",
       company: "University of Westminster",
       location: "London, United Kingdom", 
       period: "January 2025 - Present",
-      type: "Full-time",
-      description: "Leading advanced network security implementations and enterprise infrastructure management.",
+      type: "Part-time",
+      description: "Supporting IT operations and learning about network security implementations.",
       achievements: [
-        "Deployed next-generation firewall solutions across campus network infrastructure",
-        "Implemented zero-trust security architecture reducing potential breach vectors by 75%",
-        "Led cybersecurity awareness training programs for 500+ staff and students",
-        "Optimized network performance resulting in 40% improvement in system reliability"
+        "Assisting with network monitoring and basic security implementations",
+        "Supporting faculty and students with technical issues",
+        "Learning about enterprise network infrastructure",
+        "Participating in cybersecurity awareness programs"
       ],
-      technologies: ["Cisco ASA", "Palo Alto Networks", "VMware vSphere", "Active Directory", "Splunk"]
+      technologies: ["Windows Server", "Active Directory", "Network Monitoring Tools", "Help Desk Systems"]
     },
     {
       title: "Technology Consulting Intern",
@@ -141,33 +140,33 @@ export default function Resume() {
 
   const skillCategories = [
     {
-      title: "Cybersecurity Specializations",
+      title: "Cybersecurity Foundations",
       icon: <Shield className="w-6 h-6" />,
       skills: [
-        { name: "Penetration Testing", level: 95, description: "Advanced ethical hacking and vulnerability assessment" },
-        { name: "Network Security", level: 90, description: "Firewall configuration, IDS/IPS, network monitoring" },
-        { name: "Incident Response", level: 85, description: "Threat detection, forensics, recovery procedures" },
-        { name: "Risk Assessment", level: 90, description: "Security auditing, compliance, risk management" }
+        { name: "Network Security", level: 75, description: "Understanding of network protocols and security principles" },
+        { name: "Ethical Hacking", level: 70, description: "Basic penetration testing and vulnerability assessment" },
+        { name: "Security Tools", level: 65, description: "Experience with common security tools and practices" },
+        { name: "Risk Analysis", level: 60, description: "Basic understanding of security risks and mitigation" }
       ]
     },
     {
-      title: "Technical Tools & Platforms", 
+      title: "Technical Skills", 
       icon: <Code className="w-6 h-6" />,
       skills: [
-        { name: "Python/Scripting", level: 90, description: "Automation, security tools, data analysis" },
-        { name: "Linux/Windows", level: 85, description: "System administration, security hardening" },
-        { name: "Cloud Security", level: 80, description: "AWS, Azure, GCP security implementations" },
-        { name: "SIEM Solutions", level: 85, description: "Splunk, Chronicle, security monitoring" }
+        { name: "Python Programming", level: 80, description: "Scripting and automation for security tools" },
+        { name: "Linux/Windows", level: 75, description: "Operating system fundamentals and security" },
+        { name: "Web Security", level: 70, description: "Understanding of web vulnerabilities and protections" },
+        { name: "Security Tools", level: 65, description: "Familiarity with common security applications" }
       ]
     },
     {
-      title: "Security Frameworks",
+      title: "Academic Focus",
       icon: <Target className="w-6 h-6" />,
       skills: [
-        { name: "NIST Framework", level: 90, description: "Risk management, security controls" },
-        { name: "ISO 27001", level: 85, description: "Information security management systems" },
-        { name: "OWASP", level: 85, description: "Web application security standards" },
-        { name: "Zero Trust", level: 80, description: "Modern security architecture principles" }
+        { name: "Cryptography", level: 75, description: "Understanding of encryption and security protocols" },
+        { name: "Digital Forensics", level: 70, description: "Basic forensic analysis techniques" },
+        { name: "Network Design", level: 65, description: "Fundamentals of secure network architecture" },
+        { name: "Security Research", level: 70, description: "Academic research and project work" }
       ]
     }
   ];
@@ -221,10 +220,7 @@ export default function Resume() {
   ];
 
   return (
-    <Layout
-      title="Resume - Jaber Farooqi | Cybersecurity Professional"
-      description="Comprehensive resume of Jaber Farooqi - Cybersecurity Analyst with experience at PwC, University of Westminster, and expertise in penetration testing."
-    >
+    <main className="flex-1 py-20 lg:py-24">
       {/* Hero Section */}
       <section className="pt-24 pb-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-qatar-beige via-white to-qatar-beige/50">
         <div className="max-w-7xl mx-auto">
@@ -265,7 +261,7 @@ export default function Resume() {
               {/* Download Resume Button */}
               <div className="mt-8">
                 <a
-                  href="/Jaber-Farooqi-Resume.pdf"
+                  href="/JaberAliFarooqi_CV.pdf"
                   className="btn-primary inline-flex items-center text-lg"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -287,10 +283,10 @@ export default function Resume() {
               <button
                 key={section.id}
                 onClick={() => setActiveSection(section.id)}
-                className={`flex items-center px-6 py-3 rounded-lg font-medium transition-all duration-300 whitespace-nowrap ${
+                className={`flex items-center px-6 py-3 rounded-lg font-medium transition-all duration-300 ${
                   activeSection === section.id
-                    ? 'bg-qatar-navy text-white shadow-elegant'
-                    : 'text-qatar-navy hover:bg-qatar-beige'
+                    ? 'bg-white text-qatar-maroon border-2 border-qatar-maroon shadow-elegant'
+                    : 'bg-white text-qatar-navy hover:text-qatar-maroon hover:border-2 hover:border-qatar-maroon'
                 }`}
               >
                 <span className="mr-2">{section.icon}</span>
@@ -643,6 +639,6 @@ export default function Resume() {
         </div>
       </div>
     </section>
-    </Layout>
+    </main>
   );
 } 
