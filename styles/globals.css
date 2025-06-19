@@ -93,6 +93,10 @@
     @apply btn-base bg-gold-accent text-charcoal hover:bg-warm-taupe;
   }
 
+  .btn-cta-primary {
+    @apply bg-white text-midnight-navy hover:bg-soft-beige transition-all duration-300;
+  }
+
   .section-divider {
     @apply mx-auto my-6;
     width: 60px;
@@ -112,7 +116,7 @@
   }
 
   .bg-gradient-qatar {
-    @apply bg-gradient-to-br from-white to-soft-beige opacity-30;
+    @apply bg-gradient-to-br from-white to-soft-beige/30;
   }
 }
 
