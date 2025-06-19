@@ -1,5 +1,6 @@
 import '../styles/globals.css';
 import { AnimatePresence } from 'framer-motion';
+import { Analytics } from '@vercel/analytics/react';
 import AdvancedLayout from '../components/AdvancedLayout';
 
 function MyApp({ Component, pageProps }) {
@@ -8,6 +9,7 @@ function MyApp({ Component, pageProps }) {
       <AnimatePresence mode="wait">
         <Component {...pageProps} />
       </AnimatePresence>
+      <Analytics />
     </AdvancedLayout>
   );
 }
